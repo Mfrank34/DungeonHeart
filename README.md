@@ -1,8 +1,8 @@
 # DungeonHeart
 Software Development 2 Game Design 
 
-Texture got to Credits Section.
-By                        | Links
+
+Credits Section By | Links
 - Game Textures By Cainos | https://cainos.itch.io/pixel-art-top-down-basic
 - Game Endeavor Textures  | https://twitter.com/GameEndeavor
 
