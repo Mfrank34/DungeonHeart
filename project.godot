@@ -11,6 +11,17 @@ config_version=5
 [application]
 
 config/name="DungeonHeart"
-run/main_scene="res://TestItem.tscn"
+run/main_scene="res://Scenes/player.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Textures/icon.svg"
+
+[input]
+
+d={
+"deadzone": 0.5,
+"events": []
+}
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
