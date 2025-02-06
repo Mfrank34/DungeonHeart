@@ -12,8 +12,8 @@ Refences              | Links
 - DevWorm             | https://youtu.be/KceMokK2qFA?si=Uzs8sBm0IIWDKleQ
 
 # Overall Goal With Project
-    Part 1 of software Development 2
-    - Creating a game.
+	Part 1 of software Development 2
+	- Creating a game.
 
-    part 2 of software Developemnt 2 
-    - creating a report on the final game desgin.
+	part 2 of software Developemnt 2 
+	- creating a report on the final game desgin.
