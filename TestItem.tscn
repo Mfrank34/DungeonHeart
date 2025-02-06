@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://mvlx6ponjqgw"]
+[gd_scene load_steps=2 format=3 uid="uid://mvlx6ponjqgw"]
+
+[ext_resource type="Texture2D" uid="uid://b177us4vmgd5a" path="res://icon.svg" id="1_lohep"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(82, 76)
+texture = ExtResource("1_lohep")
