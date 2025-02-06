@@ -1,5 +1,8 @@
 extends CharacterBody2D
-#shout out to this man for helping me with this part https://youtu.be/pBoXqW4RykE?si=Opsn18UWjb019bTN
+# shout out to this man for helping me with this part
+# https://youtu.be/pBoXqW4RykE?si=Opsn18UWjb019bTN
+# https://youtu.be/KceMokK2qFA?si=Uzs8sBm0IIWDKleQ
+# godot and unity have little learing curve womp womp
 
 const speed = 100
 var current_dir = "none"
@@ -17,7 +20,6 @@ func player_movement(delta):
 	if Input.is_action_pressed("ui_right"):
 		current_dir = "Right" # sets the current direction the player is facing.
 		animationPlayer(current_dir, 1) # hands over the facing direction of the player and what state they are in instance moving or not.
-		
 		# basic movement for player within the direction they need to follow in.
 		velocity.x = speed 
 		velocity.y = 0
@@ -45,13 +47,13 @@ func player_movement(delta):
 
 func animationPlayer(currentDir, idle):
 	var animation = $AnimatedSprite2D # allows for me to control the animated 2d in the player.
-	#this part is a switch for different movement that happends within the game
+	# this part is a switch for different movement that happends within the game
 	match currentDir:
 		"Right":
-			if idle == 1:
-				animation.flip_h = false
+			animation.flip_h = false # set the vaule to animation is play in direction.
+			if idle == 1: # player is moving
 				animation.play("Side_Walk")
-			else:
+			else: # player is not moving
 				animation.play("Side_Idle")
 		"Left":
 			animation.flip_h = true

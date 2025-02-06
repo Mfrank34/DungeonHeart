@@ -422,4 +422,4 @@ script = ExtResource("1_2ypk5")
 position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_vdn35")
 animation = &"Back_Walk"
-frame_progress = 0.147254
+frame_progress = 0.360012
