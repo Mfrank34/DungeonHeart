@@ -5,5 +5,5 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(82, 76)
+position = Vector2(132, 113)
 texture = ExtResource("1_lohep")
