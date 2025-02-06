@@ -1,0 +1,358 @@
+<mxfile host="65bd71144e">
+    <diagram id="khzAUmkpe2_2u8Bk6iNQ" name="Page-1">
+        <mxGraphModel dx="1868" dy="927" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="none" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="3" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="19" width="480" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="Presses Enter on the Play Button" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="319" width="480" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="18" width="480" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="Player Enters the first room" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="319" width="480" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="430" width="480" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="New room transition to new room" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="730" width="480" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="76" value="" style="edgeStyle=none;html=1;fontSize=24;fontColor=#222020;" parent="1" source="16" target="20" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="430" width="480" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="room Spawns Locked chest with enemies defending it&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="730" width="480" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="20" width="480" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="Player Defeat Enermies in room" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="319" width="480" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="430" width="480" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="player defeat danagers" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="730" width="480" height="81" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1600" y="18" width="480" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="Next room unlocks for player to explore new room" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1600" y="318" width="480" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1600" y="429" width="480" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="chest unlocks, giving the player a Item. unlocks the next room to explore." style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1600" y="729" width="480" height="81" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="840" width="480" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="Player enters room with Puzzle to complete." style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1140" width="480" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="839" width="480" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="Player complete puzzle" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="1139" width="480" height="81" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="839" width="480" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="Player Gains another item" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="1139" width="480" height="81" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1600" y="839" width="480" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="Player contunes though the dungone intill death." style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1600" y="1139" width="480" height="81" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="Game Title" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=40;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="155" y="40" width="250" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="Play" style="rounded=1;whiteSpace=wrap;html=1;fontSize=40;" parent="1" vertex="1">
+                    <mxGeometry x="195" y="128" width="170" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="Perk Cards" style="rounded=1;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="205" y="200" width="150" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="Player" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="785" y="129" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="Foe&lt;br&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;fontColor=#FF0000;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="50" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="Foe&lt;br&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;fontColor=#FF0000;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="90" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="Foe&lt;br&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;fontColor=#FF0000;" parent="1" vertex="1">
+                    <mxGeometry x="970" y="40" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="Dead Foe" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;fontColor=#FF0000;rotation=61;" parent="1" vertex="1">
+                    <mxGeometry x="1470" y="40" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="Dead Foe" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;fontColor=#FF0000;rotation=61;" parent="1" vertex="1">
+                    <mxGeometry x="1150" y="50" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="Dead Foe" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;fontColor=#FF0000;rotation=61;" parent="1" vertex="1">
+                    <mxGeometry x="1200" y="68" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="Player" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1320" y="160" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="Player" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1950" y="128" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#002aff;" parent="1" vertex="1">
+                    <mxGeometry x="2060" y="129" width="30" height="62" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#002aff;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="538" width="30" height="62" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="Player" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="530" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="Chest" style="rounded=1;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#0865fd;" parent="1" vertex="1">
+                    <mxGeometry x="1445" y="460" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#002aff;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="539" width="30" height="62" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="Player" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="530" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="Foe&lt;br&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;fontColor=#FF0000;" parent="1" vertex="1">
+                    <mxGeometry x="870" y="460" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="Foe&lt;br&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;fontColor=#FF0000;" parent="1" vertex="1">
+                    <mxGeometry x="970" y="520" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="Foe&lt;br&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;fontColor=#FF0000;" parent="1" vertex="1">
+                    <mxGeometry x="920" y="560" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#2a2a2d;" parent="1" vertex="1">
+                    <mxGeometry x="1020" y="537" width="30" height="62" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#0e0e11;" parent="1" vertex="1">
+                    <mxGeometry x="1020" y="129" width="30" height="62" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#0e0e11;" parent="1" vertex="1">
+                    <mxGeometry x="1540" y="129" width="30" height="62" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#0e0e11;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="538" width="30" height="62" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" value="Dead Foe" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;fontColor=#FF0000;rotation=61;" parent="1" vertex="1">
+                    <mxGeometry x="1350" y="450" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="Dead Foe" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;fontColor=#FF0000;rotation=61;" parent="1" vertex="1">
+                    <mxGeometry x="1350" y="541" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="Dead Foe" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;fontColor=#FF0000;rotation=61;" parent="1" vertex="1">
+                    <mxGeometry x="1440" y="590" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#2020df;" parent="1" vertex="1">
+                    <mxGeometry x="1540" y="538" width="30" height="62" as="geometry"/>
+                </mxCell>
+                <mxCell id="70" value="Chest" style="rounded=1;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#fd2008;" parent="1" vertex="1">
+                    <mxGeometry x="940" y="460" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="71" value="Player" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1169" y="538" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="72" value="Item Wheel spin" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#222020;" parent="1" vertex="1">
+                    <mxGeometry x="1600" y="541" width="480" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="73" value="Spin for item" style="rounded=1;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#222020;" parent="1" vertex="1">
+                    <mxGeometry x="1760" y="630" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="74" value="Click button below for new item" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBorderColor=none;fontSize=24;fontColor=#222020;" parent="1" vertex="1">
+                    <mxGeometry x="1720" y="460" width="240" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="75" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#2020df;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="949" width="30" height="62" as="geometry"/>
+                </mxCell>
+                <mxCell id="77" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#2020df;" parent="1" vertex="1">
+                    <mxGeometry x="1070" y="537" width="30" height="62" as="geometry"/>
+                </mxCell>
+                <mxCell id="78" value="Player" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="130" y="949" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="79" value="Show animation of camera shifting over room" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBorderColor=none;fontSize=24;fontColor=#222020;" parent="1" vertex="1">
+                    <mxGeometry x="130" y="445" width="300" height="85" as="geometry"/>
+                </mxCell>
+                <mxCell id="80" value="Block" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#222020;" parent="1" vertex="1">
+                    <mxGeometry x="900" y="1020" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="81" value="Pressure plate" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#222020;" parent="1" vertex="1">
+                    <mxGeometry x="365" y="1060" width="105" height="21" as="geometry"/>
+                </mxCell>
+                <mxCell id="83" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#0e0e11;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="949" width="30" height="62" as="geometry"/>
+                </mxCell>
+                <mxCell id="84" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#2727dd;" parent="1" vertex="1">
+                    <mxGeometry x="1020" y="947" width="30" height="62" as="geometry"/>
+                </mxCell>
+                <mxCell id="85" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#2020df;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="949" width="30" height="62" as="geometry"/>
+                </mxCell>
+                <mxCell id="86" value="Player" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="810" y="960" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="87" value="Pressure plate" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#222020;" parent="1" vertex="1">
+                    <mxGeometry x="870" y="1070" width="105" height="21" as="geometry"/>
+                </mxCell>
+                <mxCell id="88" value="Block" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#222020;" parent="1" vertex="1">
+                    <mxGeometry x="90" y="870" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="89" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="838" width="480" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="90" value="Item Wheel spin" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#222020;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="950" width="480" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="91" value="Spin for item" style="rounded=1;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#222020;" parent="1" vertex="1">
+                    <mxGeometry x="1240" y="1039" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="92" value="Click button below for new item" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBorderColor=none;fontSize=24;fontColor=#222020;" parent="1" vertex="1">
+                    <mxGeometry x="1200" y="869" width="240" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="93" value="Show animation of camera shifting over room" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBorderColor=none;fontSize=24;fontColor=#222020;" parent="1" vertex="1">
+                    <mxGeometry x="1690" y="854" width="300" height="85" as="geometry"/>
+                </mxCell>
+                <mxCell id="94" value="Player" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="1825" y="970" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="95" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#2727dd;" parent="1" vertex="1">
+                    <mxGeometry x="1590" y="947" width="30" height="62" as="geometry"/>
+                </mxCell>
+                <mxCell id="97" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#0e0e11;" parent="1" vertex="1">
+                    <mxGeometry x="2060" y="950" width="30" height="62" as="geometry"/>
+                </mxCell>
+                <mxCell id="98" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="2160" y="498" width="480" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="99" value="Player Death Screen" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="2160" y="799" width="480" height="81" as="geometry"/>
+                </mxCell>
+                <mxCell id="100" value="What happens on Player Death" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBorderColor=none;fontSize=32;fontColor=#dd4227;" parent="1" vertex="1">
+                    <mxGeometry x="2200" y="340" width="400" height="129" as="geometry"/>
+                </mxCell>
+                <mxCell id="101" value="Player" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="2200" y="600" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="102" value="Item List" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#2727dd;" parent="1" vertex="1">
+                    <mxGeometry x="2270" y="520" width="350" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="104" value="Total Kills" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#2727dd;" parent="1" vertex="1">
+                    <mxGeometry x="2270" y="600" width="350" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="105" value="Total Rooms Exporlored." style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#2727dd;" parent="1" vertex="1">
+                    <mxGeometry x="2270" y="680" width="350" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="106" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="1350" width="960" height="540" as="geometry"/>
+                </mxCell>
+                <mxCell id="108" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#25252c;" vertex="1" parent="1">
+                    <mxGeometry x="970" y="1559" width="55" height="122" as="geometry"/>
+                </mxCell>
+                <mxCell id="109" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="5" y="1559" width="55" height="122" as="geometry"/>
+                </mxCell>
+                <mxCell id="110" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#25252c;rotation=90;" vertex="1" parent="1">
+                    <mxGeometry x="487.5" y="1840" width="55" height="122" as="geometry"/>
+                </mxCell>
+                <mxCell id="112" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=#000000;fontColor=#25252c;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="1390" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="113" value="Foe&lt;br&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;fontColor=#FF0000;" vertex="1" parent="1">
+                    <mxGeometry x="730" y="1420" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="114" value="Foe&lt;br&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;fontColor=#FF0000;" vertex="1" parent="1">
+                    <mxGeometry x="840" y="1460" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="116" value="Foe&lt;br&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;fontColor=#FF0000;" vertex="1" parent="1">
+                    <mxGeometry x="900" y="1390" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="117" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=#000000;fontColor=#25252c;" vertex="1" parent="1">
+                    <mxGeometry x="220" y="1430" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="118" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=#000000;fontColor=#25252c;" vertex="1" parent="1">
+                    <mxGeometry x="170" y="1760" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="119" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=#000000;fontColor=#25252c;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="1740" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="120" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=#000000;fontColor=#25252c;" vertex="1" parent="1">
+                    <mxGeometry x="790" y="1630" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="121" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=#000000;fontColor=#25252c;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="1680" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="122" value="Player" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;" vertex="1" parent="1">
+                    <mxGeometry x="335" y="1640" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="125" value="" style="endArrow=classic;html=1;fontColor=#25252c;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="365" y="1660" as="sourcePoint"/>
+                        <mxPoint x="390" y="1640" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="365" y="1660"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="126" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1075" y="1350" width="960" height="540" as="geometry"/>
+                </mxCell>
+                <mxCell id="127" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#25252c;" vertex="1" parent="1">
+                    <mxGeometry x="2005" y="1559" width="55" height="122" as="geometry"/>
+                </mxCell>
+                <mxCell id="128" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#25252c;rotation=90;" vertex="1" parent="1">
+                    <mxGeometry x="1522.5" y="1840" width="55" height="122" as="geometry"/>
+                </mxCell>
+                <mxCell id="130" value="Foe&lt;br&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;fontColor=#FF0000;" vertex="1" parent="1">
+                    <mxGeometry x="1765" y="1420" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="131" value="Foe&lt;br&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;fontColor=#FF0000;" vertex="1" parent="1">
+                    <mxGeometry x="1865" y="1750" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="132" value="Foe&lt;br&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;fontColor=#FF0000;" vertex="1" parent="1">
+                    <mxGeometry x="1920" y="1580" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="138" value="Player" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fontSize=24;" vertex="1" parent="1">
+                    <mxGeometry x="1180" y="1589" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="139" value="" style="endArrow=classic;html=1;fontColor=#25252c;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1210" y="1609" as="sourcePoint"/>
+                        <mxPoint x="1235" y="1589" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1210" y="1609"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="154" value="Door" style="rounded=0;whiteSpace=wrap;html=1;labelBorderColor=none;fontSize=24;fontColor=#25252c;" vertex="1" parent="1">
+                    <mxGeometry x="1040" y="1558" width="55" height="122" as="geometry"/>
+                </mxCell>
+                <mxCell id="155" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fontColor=#25252c;rotation=90;" vertex="1" parent="1">
+                    <mxGeometry x="1425" y="1582.25" width="250" height="65.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="156" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fontColor=#25252c;" vertex="1" parent="1">
+                    <mxGeometry x="1245" y="1584.5" width="620" height="71" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
