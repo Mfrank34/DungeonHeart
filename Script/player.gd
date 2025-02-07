@@ -7,6 +7,12 @@ extends CharacterBody2D
 const speed = 100
 var current_dir = "none"
 
+# movement values!
+const max_speed = 150 # top speed the player can move at 
+const accel = 750 # how fast to top speed
+const friction = 600 # well its friction idk how else to explain...
+var input = Vector2.ZERO
+
 func _ready() -> void:
 	# sets the player default animation
 	$AnimatedSprite2D.play("Front_Idle")
@@ -15,34 +21,41 @@ func _physics_process(delta):
 	# allows of the player to move and so on...
 	player_movement(delta)
 	
+func get_input():
+	# gets the x and y inputs and normalizes the output and returns it.
+	input.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+	input.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
+	return input.normalized()
+	
 func player_movement(delta):
 	# play controls for the player.
+	# give the player free movement within the world space and allows for them to move in each all direction with two inputs.
+	input = get_input()
+	if input == Vector2.ZERO:
+		if velocity.length() > (friction * delta ):
+			velocity -= velocity.normalized() * (friction * delta)
+		else:
+			velocity = Vector2.ZERO
+	else:
+		velocity += (input * accel * delta) # how fast the player moves in a given direction.
+		velocity = velocity.limit_length(max_speed) # limits the player movement speed.
+		
+	# animation controls
 	if Input.is_action_pressed("ui_right"):
 		current_dir = "Right" # sets the current direction the player is facing.
 		animationPlayer(current_dir, 1) # hands over the facing direction of the player and what state they are in instance moving or not.
-		# basic movement for player within the direction they need to follow in.
-		velocity.x = speed 
-		velocity.y = 0
 	elif Input.is_action_pressed("ui_left"):
 		current_dir = "Left"
 		animationPlayer(current_dir, 1)
-		velocity.x = -speed
-		velocity.y = 0
 	elif Input.is_action_pressed("ui_down"):
 		current_dir = "Down"
 		animationPlayer(current_dir, 1)
-		velocity.y = speed
-		velocity.x = 0
 	elif Input.is_action_pressed("ui_up"):
 		current_dir = "Up"
 		animationPlayer(current_dir, 1)
-		velocity.y = -speed
-		velocity.x = 0
 	else:
 		animationPlayer(current_dir, 0)
-		velocity.x = 0
-		velocity.y = 0
-	
+	# godot function for moveable objects
 	move_and_slide();
 
 func animationPlayer(currentDir, idle):
