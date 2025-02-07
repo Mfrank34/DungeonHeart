@@ -3,10 +3,6 @@
 [ext_resource type="Script" path="res://Script/player.gd" id="1_2ypk5"]
 [ext_resource type="Texture2D" uid="uid://dnjpbrktfr7a0" path="res://Textures/characters/player.png" id="2_5ue2q"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8x1nf"]
-radius = 7.0
-height = 22.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_g6lj2"]
 atlas = ExtResource("2_5ue2q")
 region = Rect2(0, 384, 48, 48)
@@ -417,14 +413,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8x1nf"]
+radius = 5.0
+height = 18.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_2ypk5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_8x1nf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -7)
 scale = Vector2(0.916667, 0.942708)
 sprite_frames = SubResource("SpriteFrames_vdn35")
 animation = &"Back_Attack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_8x1nf")
