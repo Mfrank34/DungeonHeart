@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 40
+var speed = 150
 var playerChase = false
 var player = null
 
@@ -14,7 +14,7 @@ func _on_detection_area_body_exited(body: Node2D) -> void: # player leave range.
 
 func _physics_process(delta: float) -> void:
 	# michael had a problem with a word called position.
-	#position += (player.position - position) / speed # gets the location of 
+	# position += (player.position - position) / speed # gets the location of 
 	# changing how enemys engage with movement system.
 	var velocity = Vector2.ZERO
 	
@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("walk_enemy")
 		if (player.position.x-position.x) < 0:
 			$AnimatedSprite2D.flip_h = true
-		else: 
+		else:
 			$AnimatedSprite2D.flip_h = false
 	else:
 		# Gradually slow down when not chasing

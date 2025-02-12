@@ -7,8 +7,7 @@ extends CharacterBody2D
 const speed = 100
 var current_dir = "none"
 
-# movement values!
-
+# movement values
 var max_speed = 150 # top speed the player can move at 
 const accel = 750 # how fast to top speed
 const friction = 600 # well its friction idk how else to explain...
