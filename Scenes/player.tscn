@@ -419,6 +419,8 @@ height = 18.0
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_2ypk5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -426,6 +428,7 @@ position = Vector2(-1, -7)
 scale = Vector2(0.916667, 0.942708)
 sprite_frames = SubResource("SpriteFrames_vdn35")
 animation = &"Back_Attack"
+frame_progress = 0.920184
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
