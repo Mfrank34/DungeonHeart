@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://cqaw8vpn24dph"]
 
 [ext_resource type="Texture2D" uid="uid://77xtwmcn40o3" path="res://Textures/characters/slime.png" id="1_1lxko"]
-[ext_resource type="Script" path="res://Scenes/enemy_1.gd" id="1_w2wlv"]
+[ext_resource type="Script" path="res://Script/enemy_1.gd" id="1_w2wlv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0t1rh"]
 atlas = ExtResource("1_1lxko")
@@ -127,7 +127,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2uxcs"]
-radius = 84.006
+radius = 67.0075
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jg01p"]
 radius = 7.0
@@ -145,6 +145,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_2uxcs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
