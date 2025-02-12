@@ -19,6 +19,7 @@ func _physics_process(delta: float) -> void:
 	var velocity = Vector2.ZERO
 	
 	if playerChase:
+		# movement system 
 		velocity = (player.get_global_position() - position).normalized() * speed * delta
 		$AnimatedSprite2D.play("walk_enemy")
 		if (player.position.x-position.x) < 0:
