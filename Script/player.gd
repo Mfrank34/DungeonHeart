@@ -11,6 +11,7 @@ var current_dir = "none"
 var max_speed = 150 # top speed the player can move at 
 const accel = 750 # how fast to top speed
 const friction = 600 # well its friction idk how else to explain...
+
 var input = Vector2.ZERO
 var dashSpeed = 450
 var dashCoolDown = true # start with a dash
