@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://ddjqldgx6kmu4"]
+[gd_scene load_steps=57 format=3 uid="uid://ddjqldgx6kmu4"]
 
 [ext_resource type="Script" path="res://Script/player.gd" id="1_2ypk5"]
 [ext_resource type="Texture2D" uid="uid://dnjpbrktfr7a0" path="res://Textures/characters/player.png" id="2_5ue2q"]
@@ -417,6 +417,9 @@ animations = [{
 radius = 5.0
 height = 18.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vkfq8"]
+radius = 20.0111
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
 collision_layer = 2
@@ -433,9 +436,26 @@ frame_progress = 0.920184
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_8x1nf")
+debug_color = Color(0.733158, 0.0442776, 0.0224947, 0.419608)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="dash_cooldown" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Player_HitBox" type="Area2D" parent="."]
+
+[node name="Attack" type="CollisionShape2D" parent="Player_HitBox"]
+shape = SubResource("CircleShape2D_vkfq8")
+debug_color = Color(0.458563, 0.622012, 0.957249, 0.42)
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Player_attack_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="dash_cooldown" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Player_HitBox" to="." method="_on_player_hit_box_body_entered"]
+[connection signal="body_exited" from="Player_HitBox" to="." method="_on_player_hit_box_body_exited"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="Player_attack_cooldown" to="." method="_on_player_attack_cooldown_timeout"]

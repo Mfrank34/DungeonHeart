@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cqaw8vpn24dph"]
+[gd_scene load_steps=22 format=3 uid="uid://cqaw8vpn24dph"]
 
 [ext_resource type="Texture2D" uid="uid://77xtwmcn40o3" path="res://Textures/characters/slime.png" id="1_1lxko"]
 [ext_resource type="Script" path="res://Script/enemy_1.gd" id="1_w2wlv"]
@@ -132,7 +132,12 @@ radius = 67.0075
 [sub_resource type="CircleShape2D" id="CircleShape2D_jg01p"]
 radius = 7.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5tp6k"]
+radius = 15.0333
+
 [node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_w2wlv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -141,17 +146,29 @@ animation = &"idle_enemy"
 offset = Vector2(0, -7)
 
 [node name="DetectionArea" type="Area2D" parent="."]
+position = Vector2(0, -5)
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(0, -5)
+[node name="DetectionZone" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_2uxcs")
+debug_color = Color(0.914896, 0.756729, 0.512273, 0.42)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
+[node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_jg01p")
 debug_color = Color(0.983051, 0.0736686, 0.272113, 0.42)
 
+[node name="Enemy_HitBox" type="Area2D" parent="."]
+position = Vector2(50, -15)
+
+[node name="Attack" type="CollisionShape2D" parent="Enemy_HitBox"]
+position = Vector2(-50, 11)
+shape = SubResource("CircleShape2D_5tp6k")
+debug_color = Color(0.285278, 0.619884, 0.338524, 0.42)
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="Enemy_HitBox" to="." method="_on_enemy_hit_box_body_entered"]
+[connection signal="body_exited" from="Enemy_HitBox" to="." method="_on_enemy_hit_box_body_exited"]

@@ -4,17 +4,28 @@ extends CharacterBody2D
 # https://youtu.be/KceMokK2qFA?si=Uzs8sBm0IIWDKleQ
 # godot and unity have little learing curve womp womp
 
-const speed = 100
+# Animation player
 var current_dir = "none"
 
 # movement values
-var max_speed = 150 # top speed the player can move at 
+const speed = 100
 const accel = 750 # how fast to top speed
 const friction = 600 # well its friction idk how else to explain...
-
+var max_speed = 150 # top speed the player can move at 
 var input = Vector2.ZERO
+
+# Dash system
 var dashSpeed = 450
-var dashCoolDown = true # start with a dash
+var dashCoolDown = true 
+
+# Combat System
+var enemy_inattack_range = false
+var enemy_attack_cooldown = true
+var health = 200
+var player_alive = true
+
+	# Player Attack.
+var attack_ip = false # attack in progress.
 
 func _ready() -> void:
 	# sets the player default animation
@@ -23,23 +34,71 @@ func _ready() -> void:
 func _physics_process(delta):
 	# allows of the player to move and so on...
 	player_movement(delta)
+	enemy_attack()
+	attack()
+	
+	print(Global.player_current_attack, " player state")
+	
+	if health <= 0:
+		player_alive = false # menu verable set....
+		health = 0
+		print("player has been killed.")
+		self.queue_free()
 	
 func get_input():
 	# gets the x and y inputs and normalizes the output and returns it.
 	input.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	input.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 	return input.normalized()
-	
-func dash():
-	var cooldown = $Timer
-	max_speed = dashSpeed
-	dashCoolDown = false  # Disable dashing
-	cooldown.start()  # Start cooldown timer
 
+# Dash Start
 func _on_timer_timeout() -> void:
 	max_speed = 150
 	dashCoolDown = true
+
+func dash():
+	var cooldown = $dash_cooldown
+	max_speed = dashSpeed
+	dashCoolDown = false  # Disable dashing
+	cooldown.start()  # Start cooldown timer
+# end Dash
+
+# Combat Start
+func _on_player_hit_box_body_entered(body: Node2D) -> void:
+	if body.has_method("enemy"):
+		enemy_inattack_range = true
 	
+func _on_player_hit_box_body_exited(body: Node2D) -> void:
+	if body.has_method("enemy"):
+		enemy_inattack_range = false
+
+func _on_attack_cooldown_timeout() -> void:
+	enemy_attack_cooldown = true
+
+func _on_player_attack_cooldown_timeout() -> void:
+	Global.player_current_attack = false
+	attack_ip = false
+
+func enemy_attack():
+	var attack_cooldown = $attack_cooldown
+	if enemy_inattack_range and enemy_attack_cooldown == true:
+		health -= 20
+		print(health) # debuging
+		enemy_attack_cooldown = false
+		attack_cooldown.start()
+		
+func player():
+	pass
+
+func attack():
+	var dir = current_dir
+	if Input.is_action_just_pressed("ui_accept"):
+		print("Attack!")
+		Global.player_current_attack = true
+		attack_ip = true
+		$Player_attack_cooldown.start()
+
+# combat end
 func animationPlayer(currentDir, idle):
 	var animation = $AnimatedSprite2D # allows for me to control the animated 2d in the player.
 	# this part is a switch for different movement that happends within the game
@@ -99,3 +158,5 @@ func player_movement(delta):
 		animationPlayer(current_dir, 0)
 	# godot function for moveable objects
 	move_and_slide();
+	
+	
