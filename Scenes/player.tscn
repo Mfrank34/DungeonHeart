@@ -430,8 +430,7 @@ script = ExtResource("1_2ypk5")
 position = Vector2(-1, -7)
 scale = Vector2(0.916667, 0.942708)
 sprite_frames = SubResource("SpriteFrames_vdn35")
-animation = &"Back_Attack"
-frame_progress = 0.920184
+animation = &"Side_Attack"
 
 [node name="Body" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)

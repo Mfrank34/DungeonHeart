@@ -26,6 +26,7 @@ var player_alive = true
 
 	# Player Attack.
 var player_attack_cooldown = true # attack in progress.
+var attack_animation = false
 # end of combat system. 
 
 func player(): # identifier
@@ -100,34 +101,47 @@ func player_attack():
 		if player_attack_cooldown:
 			print("Player attacked.")
 			Global.player_current_attack = true
+			attack_animation = true
 			player_attack_cooldown = false
 			cooldown.start()
 
 # combat end
-func animationPlayer(currentDir, idle):
+func animationPlayer(currentDir, attack, idle):
 	var animation = $AnimatedSprite2D # allows for me to control the animated 2d in the player.
 	# this part is a switch for different movement that happends within the game
 	match currentDir:
 		"Right":
 			animation.flip_h = false # set the vaule to animation is play in direction.
-			if idle == 1: # player is moving
-				animation.play("Side_Walk")
+			if idle: # player is moving
+				if attack: # plays the attack animation.
+					animation.play("Side_Attack")
+				else:
+					animation.play("Side_Walk")
 			else: # player is not moving
 				animation.play("Side_Idle")
 		"Left":
 			animation.flip_h = true
-			if idle == 1:
-				animation.play("Side_Walk")
+			if idle:
+				if attack:
+					animation.play("Side_Attack")
+				else:
+					animation.play("Side_Walk")
 			else:
 				animation.play("Side_Idle")
 		"Down":
-			if idle == 1:
-				animation.play("Front_Walk")
+			if idle:
+				if attack:
+					animation.player("Front_Attack")
+				else:
+					animation.play("Front_Walk")
 			else:
 				animation.play("Front_Idle")
 		"Up":
-			if idle == 1:
-				animation.play("Back_Walk")
+			if idle:
+				if attack:
+					animation.player("Back_Attack")
+				else:
+					animation.play("Back_Walk")
 			else:
 				animation.play("Back_Idle")
 
@@ -146,22 +160,25 @@ func player_movement(delta):
 	# Dash code for dashing ik right so cool
 	if Input.is_action_just_pressed("ui_dash") and dashCoolDown: # dashing and cool down system
 		dash()
+	if Input.is_action_just_pressed("ui_accept"):
+		attack_animation = true
+		player_attack()
+		
 	# animation controls
-	if Input.is_action_pressed("ui_right"):
-		current_dir = "Right" # sets the current direction the player is facing.
-		animationPlayer(current_dir, 1) # hands over the facing direction of the player and what state they are in instance moving or not.
-	elif Input.is_action_pressed("ui_left"):
-		current_dir = "Left"
-		animationPlayer(current_dir, 1)
-	elif Input.is_action_pressed("ui_down"):
-		current_dir = "Down"
-		animationPlayer(current_dir, 1)
-	elif Input.is_action_pressed("ui_up"):
-		current_dir = "Up"
-		animationPlayer(current_dir, 1)
+	if input != Vector2.ZERO:
+		match input:
+			Vector2.RIGHT:
+				current_dir ="Right"
+			Vector2.LEFT:
+				current_dir = "Left"
+			Vector2.DOWN:
+				current_dir = "Down"
+			Vector2.UP:
+				current_dir = "Up"
+		animationPlayer(current_dir, attack_animation, true)
+		
 	else:
-		animationPlayer(current_dir, 0)
+		animationPlayer(current_dir, attack_animation , 0)
+		
 	# godot function for moveable objects
-	move_and_slide();
-	
-	
+	move_and_slide()
