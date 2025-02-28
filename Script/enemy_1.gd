@@ -31,11 +31,14 @@ func _on_enemy_hit_box_body_exited(body: Node2D) -> void:
 		player_inattack_zone = false
 
 func deal_with_damage():
-	if player_inattack_zone and Global.player_current_attack == true:
-		health -= 20
-		print("Slime Health: ", health)
-		if health <= 0:
-			self.queue_free()
+	if player_inattack_zone:
+		print("Enemy Current Global Status: ", Global.player_current_attack )
+		if Global.player_current_attack:
+			print("taking damage")
+			health -= 10 
+			print("Slime Health: ", health)
+			if health <= 0:
+				self.queue_free()
 # Compat end
 
 func enemy(delta): # shows enemy.
