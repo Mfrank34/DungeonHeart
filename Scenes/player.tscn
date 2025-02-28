@@ -418,7 +418,7 @@ radius = 6.0
 height = 18.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vkfq8"]
-radius = 15.3478
+radius = 13.35
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
@@ -434,7 +434,6 @@ animation = &"Back_Attack"
 frame_progress = 0.920184
 
 [node name="Body" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_8x1nf")
 debug_color = Color(0.733158, 0.0442776, 0.0224947, 0.419608)
@@ -461,5 +460,5 @@ wait_time = 0.5
 [connection signal="timeout" from="dash_cooldown" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Player_HitBox" to="." method="_on_player_hit_box_body_entered"]
 [connection signal="body_exited" from="Player_HitBox" to="." method="_on_player_hit_box_body_exited"]
-[connection signal="timeout" from="Enemy_attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="Enemy_attack_cooldown" to="." method="_on_enemy_attack_cooldown_timeout"]
 [connection signal="timeout" from="Player_attack_cooldown" to="." method="_on_player_attack_cooldown_timeout"]

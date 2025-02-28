@@ -1379,6 +1379,12 @@ use_kinematic_bodies = true
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Enemy" parent="." instance=ExtResource("8_4iblh")]
-position = Vector2(430, -62)
+position = Vector2(400, -33)
 
 [node name="Player" parent="." instance=ExtResource("6_vbclw")]
+
+[node name="Enemy3" parent="." instance=ExtResource("8_4iblh")]
+position = Vector2(418, -66)
+
+[node name="Enemy2" parent="." instance=ExtResource("8_4iblh")]
+position = Vector2(445, -35)

@@ -8,6 +8,7 @@ var player = null
 # combat system.
 var health = 100
 var player_inattack_zone = false
+var cooldown = true
 
 func _physics_process(delta: float) -> void:
 	enemy(delta)
@@ -31,14 +32,11 @@ func _on_enemy_hit_box_body_exited(body: Node2D) -> void:
 		player_inattack_zone = false
 
 func deal_with_damage():
-	if player_inattack_zone:
-		print("Enemy Current Global Status: ", Global.player_current_attack )
-		if Global.player_current_attack:
-			print("taking damage")
-			health -= 10 
+	if player_inattack_zone and Global.player_current_attack:
+			health -= 20 # slimes health pool
 			print("Slime Health: ", health)
-			if health <= 0:
-				self.queue_free()
+			Global.player_current_attack = false
+
 # Compat end
 
 func enemy(delta): # shows enemy.
@@ -46,7 +44,8 @@ func enemy(delta): # shows enemy.
 	# position += (player.position - position) / speed # gets the location of 
 	# changing how enemys engage with movement system.
 	var velocity = Vector2.ZERO
-	
+	if health <= 0:
+		self.queue_free()
 	if playerChase:
 		# movement system 
 		velocity = (player.get_global_position() - position).normalized() * speed * delta

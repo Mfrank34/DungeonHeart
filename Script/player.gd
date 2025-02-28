@@ -26,6 +26,7 @@ var player_alive = true
 
 	# Player Attack.
 var player_attack_cooldown = true # attack in progress.
+# end of combat system. 
 
 func player(): # identifier
 	pass
@@ -78,14 +79,17 @@ func _on_attack_cooldown_timeout() -> void:
 	enemy_attack_cooldown = true
 
 func _on_player_attack_cooldown_timeout() -> void:
-	Global.player_current_attack = false
+	Global.player_current_attack = true
 	player_attack_cooldown = true
+
+func _on_enemy_attack_cooldown_timeout() -> void:
+	enemy_attack_cooldown = true
 
 func enemy_attack():
 	var cooldown = $Enemy_attack_cooldown
 	if enemy_inattack_range: # find enemy in range
 		if enemy_attack_cooldown: # looks for cooldown.
-			health -= 20
+			health -= 10
 			print("Player Health: ", health) # debuging
 			enemy_attack_cooldown = false
 			cooldown.start()
@@ -94,6 +98,7 @@ func player_attack():
 	var cooldown = $Player_attack_cooldown
 	if Input.is_action_just_pressed("ui_accept"):
 		if player_attack_cooldown:
+			print("Player attacked.")
 			Global.player_current_attack = true
 			player_attack_cooldown = false
 			cooldown.start()
