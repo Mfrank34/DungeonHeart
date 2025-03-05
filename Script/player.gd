@@ -5,7 +5,8 @@ extends CharacterBody2D
 # godot and unity have little learing curve womp womp
 
 # Animation player
-var current_dir = "none"
+var direction = "none"
+var status = "none"
 
 # movement values
 const speed = 100
@@ -40,7 +41,6 @@ func _physics_process(delta):
 	# allows of the player to move and so on...
 	player_movement(delta)
 	enemy_attack()
-	player_attack()
 	
 	# when player dead delet player body.
 	if health <= 0:
@@ -97,55 +97,74 @@ func enemy_attack():
 
 func player_attack():
 	var cooldown = $Player_attack_cooldown
-	if Input.is_action_just_pressed("ui_accept"):
-		if player_attack_cooldown:
-			print("Player attacked.")
-			Global.player_current_attack = true
-			attack_animation = true
-			player_attack_cooldown = false
-			cooldown.start()
+	if player_attack_cooldown:
+		Global.player_current_attack = true
+		player_attack_cooldown = false
+		cooldown.start()
 
 # combat end
-func animationPlayer(currentDir, attack, idle):
-	var animation = $AnimatedSprite2D # allows for me to control the animated 2d in the player.
+@warning_ignore("shadowed_variable")
+func animation_player(direction, state):
+	var animation = $AnimatedSprite2D 
+	# allows for me to control the animated 2d in the player.
 	# this part is a switch for different movement that happends within the game
-	match currentDir:
+	match direction:
 		"Right":
 			animation.flip_h = false # set the vaule to animation is play in direction.
-			if idle: # player is moving
-				if attack: # plays the attack animation.
-					animation.play("Side_Attack")
-				else:
+			match state:
+				"attack":
+					animation.play("Attack_Side")
+				"dash":
+					pass
+				"walk":
 					animation.play("Side_Walk")
-			else: # player is not moving
-				animation.play("Side_Idle")
+				_:
+					animation.play("Side_Idle")
 		"Left":
 			animation.flip_h = true
-			if idle:
-				if attack:
-					animation.play("Side_Attack")
-				else:
+			match state:
+				"attack":
+					animation.play("Attack_Side")
+				"dash":
+					pass
+				"walk": 
 					animation.play("Side_Walk")
-			else:
-				animation.play("Side_Idle")
+				_:
+					animation.play("Side_Idle")
 		"Down":
-			if idle:
-				if attack:
-					animation.player("Front_Attack")
-				else:
-					animation.play("Front_Walk")
-			else:
-				animation.play("Front_Idle")
+			match state:
+				"attack":
+					animation.play("Down_Attack")
+				"dash":
+					pass
+				"walk":
+					animation.play("Down_Walk")
+				_:
+					animation.play("Down_Idle")
 		"Up":
-			if idle:
-				if attack:
-					animation.player("Back_Attack")
-				else:
-					animation.play("Back_Walk")
-			else:
-				animation.play("Back_Idle")
+			match state:
+				"attack":
+					animation.play("Up_Attack")
+				"dash":
+					pass
+				"walk":
+					animation.play("Up_Walk")
+				_:
+					animation.play("Up_Idle")
 
 func player_movement(delta):
+	# animation controls
+	if input != Vector2.ZERO:
+		match input:
+			Vector2.RIGHT:
+				direction ="Right"
+			Vector2.LEFT:
+				direction = "Left"
+			Vector2.DOWN:
+				direction = "Down"
+			Vector2.UP:
+				direction = "Up"
+	
 	# play controls for the player.
 	# give the player free movement within the world space and allows for them to move in each all direction with two inputs.
 	input = get_input()
@@ -154,31 +173,23 @@ func player_movement(delta):
 			velocity -= velocity.normalized() * (friction * delta)
 		else:
 			velocity = Vector2.ZERO
+			# animation reset.
+			if player_attack_cooldown:
+				status = "none" # idle animation set
 	else:
 		velocity += (input * accel * delta) # how fast the player moves in a given direction.
 		velocity = velocity.limit_length(max_speed) # limits the player movement speed.
+		status = "walk" # walk animation set.
+	
 	# Dash code for dashing ik right so cool
 	if Input.is_action_just_pressed("ui_dash") and dashCoolDown: # dashing and cool down system
+		status = "dash" # setting dash animation.
 		dash()
+	
 	if Input.is_action_just_pressed("ui_accept"):
-		attack_animation = true
+		status = "attack" # sets the attack animation.
 		player_attack()
-		
-	# animation controls
-	if input != Vector2.ZERO:
-		match input:
-			Vector2.RIGHT:
-				current_dir ="Right"
-			Vector2.LEFT:
-				current_dir = "Left"
-			Vector2.DOWN:
-				current_dir = "Down"
-			Vector2.UP:
-				current_dir = "Up"
-		animationPlayer(current_dir, attack_animation, true)
-		
-	else:
-		animationPlayer(current_dir, attack_animation , 0)
-		
+	# animation
+	animation_player(direction, status)
 	# godot function for moveable objects
 	move_and_slide()
