@@ -35,6 +35,7 @@ func deal_with_damage():
 	if player_inattack_zone and Global.player_current_attack:
 			health -= 15 # soldier health pool.
 			print("Soldier Health: ", health)
+			$AnimatedSprite2D.play("Attack")
 			Global.player_current_attack = false
 # Compat end
 
@@ -54,11 +55,6 @@ func enemy(delta): # shows enemy.
 			$AnimatedSprite2D.flip_h = true
 		else:
 			$AnimatedSprite2D.flip_h = false
-			
-		if Global.enemy_current_attack:
-			print("playing animation attack")
-			$AnimatedSprite2D.play("Attack")
-			Global.enemy_current_attack = false
 	else:
 		# Gradually slow down when not chasing
 		velocity = lerp(velocity, Vector2.ZERO, 0.07)

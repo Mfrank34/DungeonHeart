@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cx02ohk5x31gl" path="res://Textures/SetParts/TX Tileset Wall.png" id="4_41voj"]
 [ext_resource type="Texture2D" uid="uid://cy61v4s0ghcdv" path="res://Textures/SetParts/TX Struct.png" id="5_6f4so"]
 [ext_resource type="Texture2D" uid="uid://dsk3g1s5nkqwb" path="res://Textures/tilesets/walls/walls.png" id="6_fyu55"]
-[ext_resource type="PackedScene" uid="uid://cqaw8vpn24dph" path="res://Scenes/enemy.tscn" id="8_4iblh"]
-[ext_resource type="PackedScene" uid="uid://c5opcymfjgf6x" path="res://Scenes/enemy_2.tscn" id="9_ojh4s"]
-[ext_resource type="PackedScene" uid="uid://nxeecqvdnpf0" path="res://Scenes/enemy_3.tscn" id="10_ilpkg"]
+[ext_resource type="PackedScene" uid="uid://cqaw8vpn24dph" path="res://Scenes/enemy/enemy_1.tscn" id="8_4iblh"]
+[ext_resource type="PackedScene" uid="uid://c5opcymfjgf6x" path="res://Scenes/enemy/enemy_2.tscn" id="9_ojh4s"]
+[ext_resource type="PackedScene" uid="uid://nxeecqvdnpf0" path="res://Scenes/enemy/enemy_3.tscn" id="10_ilpkg"]
 [ext_resource type="PackedScene" uid="uid://ddjqldgx6kmu4" path="res://Scenes/player.tscn" id="10_jghof"]
 
 [sub_resource type="TileSet" id="TileSet_w8app"]
@@ -1388,9 +1388,11 @@ position = Vector2(-417, -64)
 position = Vector2(-407, 149)
 scale = Vector2(0.996291, 1.01463)
 slide_on_ceiling = false
+script = null
 
 [node name="Enemy_3" parent="." instance=ExtResource("10_ilpkg")]
 position = Vector2(-410, 42)
+script = null
 
 [node name="Player" parent="." instance=ExtResource("10_jghof")]
 position = Vector2(64, -60)

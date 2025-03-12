@@ -1,66 +1,66 @@
 [gd_scene load_steps=22 format=3 uid="uid://cqaw8vpn24dph"]
 
-[ext_resource type="Script" uid="uid://cyssrrm3papo" path="res://Script/enemy_2.gd" id="1_1f0kj"]
-[ext_resource type="Texture2D" uid="uid://bl5whrosonxp8" path="res://Textures/Enemy_1/slime.png" id="1_1lxko"]
+[ext_resource type="Texture2D" uid="uid://bl5whrosonxp8" path="res://Textures/Enemy_1/slime.png" id="1_jwqgc"]
+[ext_resource type="Script" uid="uid://crrx78t4p8fs1" path="res://Script/enemy_1.gd" id="1_njp5n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qit8y"]
-atlas = ExtResource("1_1lxko")
+atlas = ExtResource("1_jwqgc")
 region = Rect2(0, 384, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4gdgy"]
-atlas = ExtResource("1_1lxko")
+atlas = ExtResource("1_jwqgc")
 region = Rect2(32, 384, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8n4gd"]
-atlas = ExtResource("1_1lxko")
+atlas = ExtResource("1_jwqgc")
 region = Rect2(64, 384, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pfsys"]
-atlas = ExtResource("1_1lxko")
+atlas = ExtResource("1_jwqgc")
 region = Rect2(96, 384, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_plxki"]
-atlas = ExtResource("1_1lxko")
+atlas = ExtResource("1_jwqgc")
 region = Rect2(128, 384, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0o7g4"]
-atlas = ExtResource("1_1lxko")
+atlas = ExtResource("1_jwqgc")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mdifi"]
-atlas = ExtResource("1_1lxko")
+atlas = ExtResource("1_jwqgc")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tvefu"]
-atlas = ExtResource("1_1lxko")
+atlas = ExtResource("1_jwqgc")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fhldr"]
-atlas = ExtResource("1_1lxko")
+atlas = ExtResource("1_jwqgc")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bc858"]
-atlas = ExtResource("1_1lxko")
+atlas = ExtResource("1_jwqgc")
 region = Rect2(0, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q3cx2"]
-atlas = ExtResource("1_1lxko")
+atlas = ExtResource("1_jwqgc")
 region = Rect2(32, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7523r"]
-atlas = ExtResource("1_1lxko")
+atlas = ExtResource("1_jwqgc")
 region = Rect2(64, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0a8yw"]
-atlas = ExtResource("1_1lxko")
+atlas = ExtResource("1_jwqgc")
 region = Rect2(96, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wd3wd"]
-atlas = ExtResource("1_1lxko")
+atlas = ExtResource("1_jwqgc")
 region = Rect2(128, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b0mq0"]
-atlas = ExtResource("1_1lxko")
+atlas = ExtResource("1_jwqgc")
 region = Rect2(160, 128, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_beirf"]
@@ -138,20 +138,24 @@ radius = 19.0
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_1f0kj")
+script = ExtResource("1_njp5n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_beirf")
-animation = &"Walk"
-frame = 4
-frame_progress = 0.177945
+animation = &"Idle"
+frame = 2
+frame_progress = 0.628432
 offset = Vector2(0, -7)
 
 [node name="Body" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_jg01p")
 debug_color = Color(0.8, 0.196078, 0.188235, 0.419608)
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.7
 
 [node name="DetectionArea" type="Area2D" parent="."]
 visible = false
@@ -174,6 +178,7 @@ position = Vector2(-50, 7)
 shape = SubResource("CircleShape2D_5tp6k")
 debug_color = Color(0.735356, 0.742409, 0.750494, 0.42)
 
+[connection signal="timeout" from="Timer" to="." method="weapon_time_out"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="Enemy_HitBox" to="." method="_on_enemy_hit_box_body_entered"]

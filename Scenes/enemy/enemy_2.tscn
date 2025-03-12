@@ -1,6 +1,6 @@
 [gd_scene load_steps=33 format=3 uid="uid://c5opcymfjgf6x"]
 
-[ext_resource type="Script" uid="uid://cyssrrm3papo" path="res://Script/enemy_2.gd" id="1_t3d2o"]
+[ext_resource type="Script" uid="uid://cyssrrm3papo" path="res://Script/enemy_2.gd" id="1_b6n7j"]
 [ext_resource type="Texture2D" uid="uid://b5vunl7qi2bsx" path="res://Textures/Enemy_2/Soldier.png" id="2_qit8y"]
 [ext_resource type="Texture2D" uid="uid://dw1ggxsgdarjg" path="res://Textures/Enemy_2/Soldier-Walk.png" id="3_4gdgy"]
 [ext_resource type="Texture2D" uid="uid://ds4f78p4u27iu" path="res://Textures/Enemy_2/Soldier-Attack01.png" id="4_8n4gd"]
@@ -203,12 +203,12 @@ radius = 13.1529
 radius = 67.0075
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5tp6k"]
-radius = 33.0
+radius = 43.0116
 
 [node name="Enemy_2" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_t3d2o")
+script = ExtResource("1_b6n7j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -1.00002)
@@ -221,6 +221,8 @@ frame_progress = 0.487994
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_jg01p")
 debug_color = Color(0.8, 0.196078, 0.188235, 0.419608)
+
+[node name="Timer" type="Timer" parent="."]
 
 [node name="DetectionArea" type="Area2D" parent="."]
 visible = false

@@ -9,25 +9,24 @@ var direction = "none"
 var status = "none"
 
 # movement values
+var input = Vector2.ZERO # vector information from awsd.
+# movement feel.
 const speed = 100
 const accel = 750 # how fast to top speed
 const friction = 600 # well its friction idk how else to explain...
+# max speed.
 var max_speed = 150 # top speed the player can move at 
-var input = Vector2.ZERO
-
 # Dash system
 var dashSpeed = 450
 var dashCoolDown = true 
-
 # Combat System
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
+# player health.
 var health = 300
 var player_alive = true
-
-	# Player Attack.
-var player_attack_cooldown = true # attack in progress.
-var attack_animation = false
+# player health.
+var player_attack_cooldown = true
 # end of combat system. 
 
 func player(): # identifier
@@ -35,7 +34,7 @@ func player(): # identifier
 
 func _ready() -> void:
 	# sets the player default animation
-	$AnimatedSprite2D.play("Front_Idle")
+	$AnimatedSprite2D.play("Down_Idle")
 
 func _physics_process(delta):
 	# allows of the player to move and so on...
@@ -49,7 +48,6 @@ func _physics_process(delta):
 		print("player has been killed.")
 		self.queue_free()
 
-	
 func get_input():
 	# gets the x and y inputs and normalizes the output and returns it.
 	input.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))

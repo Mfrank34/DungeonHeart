@@ -10,14 +10,23 @@ var health = 125
 var player_inattack_zone = false
 var cooldown = true
 
+# slime damage.
+var damage = 5
+
+func _ready() -> void:
+	$AnimatedSprite2D.play("Idle")
+
 func _physics_process(delta: float) -> void:
 	enemy(delta)
-	deal_with_damage()
+	attack()
+	# deal_with_damage()
 
+# player entering body.
 func _on_detection_area_body_entered(body: Node2D) -> void: # when player enters range.
 	player = body # tells the script to track the player 
 	playerChase = true # gets the sctipt to start following the player.
 
+# player leaving body.
 func _on_detection_area_body_exited(body: Node2D) -> void: # player leave range.
 	player = null # disables player tracking no target.
 	playerChase = false # disables player chasing script.
@@ -31,11 +40,28 @@ func _on_enemy_hit_box_body_exited(body: Node2D) -> void:
 	if body.has_method("player"):
 		player_inattack_zone = false
 
+# dealing damage to enemy.
 func deal_with_damage():
 	if player_inattack_zone and Global.player_current_attack:
 			health -= 30 # slimes health pool
 			print("Slime Health: ", health)
 			Global.player_current_attack = false
+
+# enemy dealing damage to player
+func weapon_time_out() -> void:
+	cooldown = true
+	pass # Replace with function body.
+
+func attack():
+	# find out player in range and cooldown check.
+	if player_inattack_zone and cooldown:
+		var timeout = %Timer
+		cooldown = false
+		# code on how much the player damage is taking.
+		Global.player_health = 5
+		print ("current global health | ", Global.Player_Health)
+		$AnimatedSprite2D.play("Attack")
+		timeout.start()
 # Compat end
 
 func enemy(delta): # shows enemy.

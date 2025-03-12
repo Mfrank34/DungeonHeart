@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="DungeonHeart"
-run/main_scene="res://Scenes/room.tscn"
+run/main_scene="uid://drba331jhyolb"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://Textures/icon.svg"
 
 [autoload]
 
-Global="*res://Script/global.gd"
+Global="*res://Script/Global.gd"
 
 [input]
 
