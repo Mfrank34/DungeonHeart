@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
 # movement and detection.
-var speed = 75
+var speed = 45
 var playerChase = false
 var player = null
 
 # combat system.
-var health = 100
+var health = 150
 var player_inattack_zone = false
 var cooldown = true
 
@@ -33,8 +33,8 @@ func _on_enemy_hit_box_body_exited(body: Node2D) -> void:
 
 func deal_with_damage():
 	if player_inattack_zone and Global.player_current_attack:
-			health -= 30 # slimes health pool
-			print("Slime Health: ", health)
+			health -= 15 # soldier health pool.
+			print("Soldier Health: ", health)
 			Global.player_current_attack = false
 # Compat end
 
@@ -54,6 +54,11 @@ func enemy(delta): # shows enemy.
 			$AnimatedSprite2D.flip_h = true
 		else:
 			$AnimatedSprite2D.flip_h = false
+			
+		if Global.enemy_current_attack:
+			print("playing animation attack")
+			$AnimatedSprite2D.play("Attack")
+			Global.enemy_current_attack = false
 	else:
 		# Gradually slow down when not chasing
 		velocity = lerp(velocity, Vector2.ZERO, 0.07)

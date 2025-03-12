@@ -41,13 +41,14 @@ func _physics_process(delta):
 	# allows of the player to move and so on...
 	player_movement(delta)
 	enemy_attack()
-	
+
 	# when player dead delet player body.
 	if health <= 0:
 		player_alive = false # menu verable set....
 		health = 0
 		print("player has been killed.")
 		self.queue_free()
+
 	
 func get_input():
 	# gets the x and y inputs and normalizes the output and returns it.
@@ -80,7 +81,7 @@ func _on_attack_cooldown_timeout() -> void:
 	enemy_attack_cooldown = true
 
 func _on_player_attack_cooldown_timeout() -> void:
-	Global.player_current_attack = true
+	Global.player_current_attack = false
 	player_attack_cooldown = true
 
 func _on_enemy_attack_cooldown_timeout() -> void:
@@ -90,6 +91,7 @@ func enemy_attack():
 	var cooldown = $Enemy_attack_cooldown
 	if enemy_inattack_range: # find enemy in range
 		if enemy_attack_cooldown: # looks for cooldown.
+			Global.enemy_current_attack = true
 			health -= 10
 			print("Player Health: ", health) # debuging
 			enemy_attack_cooldown = false
@@ -113,7 +115,7 @@ func animation_player(direction, state):
 			animation.flip_h = false # set the vaule to animation is play in direction.
 			match state:
 				"attack":
-					animation.play("Attack_Side")
+					animation.play("Side_Attack")
 				"dash":
 					pass
 				"walk":
@@ -124,7 +126,7 @@ func animation_player(direction, state):
 			animation.flip_h = true
 			match state:
 				"attack":
-					animation.play("Attack_Side")
+					animation.play("Side_Attack")
 				"dash":
 					pass
 				"walk": 
@@ -179,16 +181,18 @@ func player_movement(delta):
 	else:
 		velocity += (input * accel * delta) # how fast the player moves in a given direction.
 		velocity = velocity.limit_length(max_speed) # limits the player movement speed.
-		status = "walk" # walk animation set.
+		if player_attack_cooldown:
+			status = "walk" # walk animation set.
 	
 	# Dash code for dashing ik right so cool
 	if Input.is_action_just_pressed("ui_dash") and dashCoolDown: # dashing and cool down system
 		status = "dash" # setting dash animation.
 		dash()
-	
+
 	if Input.is_action_just_pressed("ui_accept"):
 		status = "attack" # sets the attack animation.
 		player_attack()
+
 	# animation
 	animation_player(direction, status)
 	# godot function for moveable objects

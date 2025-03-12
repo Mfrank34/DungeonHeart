@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://drba331jhyolb"]
+[gd_scene load_steps=20 format=4 uid="uid://drba331jhyolb"]
 
 [ext_resource type="Texture2D" uid="uid://di45xogm1wxoi" path="res://Textures/SetParts/TX Tileset Grass.png" id="1_q33nd"]
 [ext_resource type="Texture2D" uid="uid://dq8xu0f865qbr" path="res://Textures/SetParts/TX Plant.png" id="2_nargn"]
@@ -6,8 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cx02ohk5x31gl" path="res://Textures/SetParts/TX Tileset Wall.png" id="4_41voj"]
 [ext_resource type="Texture2D" uid="uid://cy61v4s0ghcdv" path="res://Textures/SetParts/TX Struct.png" id="5_6f4so"]
 [ext_resource type="Texture2D" uid="uid://dsk3g1s5nkqwb" path="res://Textures/tilesets/walls/walls.png" id="6_fyu55"]
-[ext_resource type="PackedScene" uid="uid://ddjqldgx6kmu4" path="res://Scenes/player.tscn" id="6_vbclw"]
 [ext_resource type="PackedScene" uid="uid://cqaw8vpn24dph" path="res://Scenes/enemy.tscn" id="8_4iblh"]
+[ext_resource type="PackedScene" uid="uid://c5opcymfjgf6x" path="res://Scenes/enemy_2.tscn" id="9_ojh4s"]
+[ext_resource type="PackedScene" uid="uid://nxeecqvdnpf0" path="res://Scenes/enemy_3.tscn" id="10_ilpkg"]
 
 [sub_resource type="TileSet" id="TileSet_w8app"]
 tile_size = Vector2i(32, 32)
@@ -1361,6 +1362,9 @@ sources/0 = SubResource("TileSetAtlasSource_awllo")
 sources/1 = SubResource("TileSetAtlasSource_4fqhd")
 
 [node name="Room" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [-207.0]
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_w8app")
@@ -1376,15 +1380,12 @@ tile_map_data = PackedByteArray("AADd/+7/AAAKAAMAAADd/+//AAAKAAQAAADd//D/AAAKAAU
 tile_set = SubResource("TileSet_nk5sf")
 use_kinematic_bodies = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Enemy" parent="." instance=ExtResource("8_4iblh")]
-position = Vector2(165, -130)
 
-[node name="Player" parent="." instance=ExtResource("6_vbclw")]
+[node name="Enemy_2" parent="." instance=ExtResource("9_ojh4s")]
+position = Vector2(-213, 132)
+scale = Vector2(0.996291, 1.01463)
+slide_on_ceiling = false
 
-[node name="Enemy3" parent="." instance=ExtResource("8_4iblh")]
-position = Vector2(418, -66)
-
-[node name="Enemy2" parent="." instance=ExtResource("8_4iblh")]
-position = Vector2(427, 122)
+[node name="Enemy_3" parent="." instance=ExtResource("10_ilpkg")]
+position = Vector2(-158, -40)
