@@ -6,7 +6,7 @@ var playerChase = false
 var player = null
 
 # combat system.
-var health = 100
+var health = 125
 var player_inattack_zone = false
 var cooldown = true
 

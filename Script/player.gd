@@ -22,7 +22,7 @@ var dashCoolDown = true
 # Combat System
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
-var health = 200
+var health = 300
 var player_alive = true
 
 	# Player Attack.

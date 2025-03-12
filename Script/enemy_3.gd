@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # movement and detection.
-var speed = 45
+var speed = 65
 var playerChase = false
 var player = null
 

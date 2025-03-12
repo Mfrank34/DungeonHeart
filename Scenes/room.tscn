@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://drba331jhyolb"]
+[gd_scene load_steps=21 format=4 uid="uid://drba331jhyolb"]
 
 [ext_resource type="Texture2D" uid="uid://di45xogm1wxoi" path="res://Textures/SetParts/TX Tileset Grass.png" id="1_q33nd"]
 [ext_resource type="Texture2D" uid="uid://dq8xu0f865qbr" path="res://Textures/SetParts/TX Plant.png" id="2_nargn"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cqaw8vpn24dph" path="res://Scenes/enemy.tscn" id="8_4iblh"]
 [ext_resource type="PackedScene" uid="uid://c5opcymfjgf6x" path="res://Scenes/enemy_2.tscn" id="9_ojh4s"]
 [ext_resource type="PackedScene" uid="uid://nxeecqvdnpf0" path="res://Scenes/enemy_3.tscn" id="10_ilpkg"]
+[ext_resource type="PackedScene" uid="uid://ddjqldgx6kmu4" path="res://Scenes/player.tscn" id="10_jghof"]
 
 [sub_resource type="TileSet" id="TileSet_w8app"]
 tile_size = Vector2i(32, 32)
@@ -1381,11 +1382,15 @@ tile_set = SubResource("TileSet_nk5sf")
 use_kinematic_bodies = true
 
 [node name="Enemy" parent="." instance=ExtResource("8_4iblh")]
+position = Vector2(-417, -64)
 
 [node name="Enemy_2" parent="." instance=ExtResource("9_ojh4s")]
-position = Vector2(-213, 132)
+position = Vector2(-407, 149)
 scale = Vector2(0.996291, 1.01463)
 slide_on_ceiling = false
 
 [node name="Enemy_3" parent="." instance=ExtResource("10_ilpkg")]
-position = Vector2(-158, -40)
+position = Vector2(-410, 42)
+
+[node name="Player" parent="." instance=ExtResource("10_jghof")]
+position = Vector2(64, -60)
