@@ -1363,6 +1363,8 @@ sources/0 = SubResource("TileSetAtlasSource_awllo")
 sources/1 = SubResource("TileSetAtlasSource_4fqhd")
 
 [node name="Room" type="Node2D"]
+light_mask = 2
+visibility_layer = 2
 metadata/_edit_horizontal_guides_ = [-207.0]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -1384,15 +1386,11 @@ use_kinematic_bodies = true
 [node name="Enemy" parent="." instance=ExtResource("8_4iblh")]
 position = Vector2(-417, -64)
 
-[node name="Enemy_2" parent="." instance=ExtResource("9_ojh4s")]
-position = Vector2(-407, 149)
-scale = Vector2(0.996291, 1.01463)
-slide_on_ceiling = false
-script = null
+[node name="Enemy2" parent="." instance=ExtResource("9_ojh4s")]
+position = Vector2(-422, 221)
 
-[node name="Enemy_3" parent="." instance=ExtResource("10_ilpkg")]
-position = Vector2(-410, 42)
-script = null
+[node name="Enemy3" parent="." instance=ExtResource("10_ilpkg")]
+position = Vector2(-420, 71)
 
 [node name="Player" parent="." instance=ExtResource("10_jghof")]
 position = Vector2(64, -60)

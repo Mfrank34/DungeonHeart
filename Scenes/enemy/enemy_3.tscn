@@ -206,7 +206,7 @@ radius = 67.0075
 [sub_resource type="CircleShape2D" id="CircleShape2D_5tp6k"]
 radius = 32.0
 
-[node name="Enemy_3" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_7ka4c")
@@ -224,13 +224,12 @@ debug_color = Color(0.8, 0.196078, 0.188235, 0.419608)
 [node name="Timer" type="Timer" parent="."]
 
 [node name="DetectionArea" type="Area2D" parent="."]
-visible = false
 position = Vector2(0, -5)
 collision_layer = 2
 collision_mask = 2
 
 [node name="DetectionZone" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(0, 1)
+position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_2uxcs")
 debug_color = Color(0.618349, 0.821655, 0.891395, 0.42)
 
