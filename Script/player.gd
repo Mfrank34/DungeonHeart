@@ -39,7 +39,7 @@ func _ready() -> void:
 func _physics_process(delta):
 	# allows of the player to move and so on...
 	player_movement(delta)
-	enemy_attack()
+	 # enemy_attack()
 
 	# when player dead delet player body.
 	if health <= 0:
@@ -89,7 +89,6 @@ func enemy_attack():
 	var cooldown = $Enemy_attack_cooldown
 	if enemy_inattack_range: # find enemy in range
 		if enemy_attack_cooldown: # looks for cooldown.
-			Global.enemy_current_attack = true
 			health -= 10
 			print("Player Health: ", health) # debuging
 			enemy_attack_cooldown = false
@@ -153,6 +152,12 @@ func animation_player(direction, state):
 					animation.play("Up_Idle")
 
 func player_movement(delta):
+	# death animation.
+	if Global.Player_Health <= 0:
+		animation_player(direction, "death")
+		await get_tree().create_timer(0.5).timeout  # Short delay before deleting
+		queue_free()
+		return
 	# animation controls
 	if input != Vector2.ZERO:
 		match input:
@@ -164,7 +169,6 @@ func player_movement(delta):
 				direction = "Down"
 			Vector2.UP:
 				direction = "Up"
-	
 	# play controls for the player.
 	# give the player free movement within the world space and allows for them to move in each all direction with two inputs.
 	input = get_input()

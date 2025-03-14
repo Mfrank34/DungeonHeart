@@ -124,7 +124,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_0bu25")
 }],
 "loop": true,
-"name": &"Attack",
+"name": &"attack",
 "speed": 5.0
 }, {
 "frames": [{
@@ -141,7 +141,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_kyyo5")
 }],
 "loop": true,
-"name": &"Death",
+"name": &"death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -164,7 +164,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_peawa")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -193,7 +193,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ohgwc")
 }],
 "loop": true,
-"name": &"Walk",
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -201,7 +201,7 @@ animations = [{
 radius = 13.1529
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2uxcs"]
-radius = 67.0075
+radius = 121.004
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5tp6k"]
 radius = 32.0
@@ -214,14 +214,15 @@ script = ExtResource("1_7ka4c")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.72)
 sprite_frames = SubResource("SpriteFrames_a4kuv")
-animation = &"Attack"
-frame_progress = 0.447112
+animation = &"walk"
 
 [node name="Body" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jg01p")
 debug_color = Color(0.8, 0.196078, 0.188235, 0.419608)
 
 [node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
 
 [node name="DetectionArea" type="Area2D" parent="."]
 position = Vector2(0, -5)

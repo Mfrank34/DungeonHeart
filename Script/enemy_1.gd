@@ -1,37 +1,39 @@
 extends CharacterBody2D
 
-# movement and detection.
+# Movement and detection.
 var speed = 75
 var playerChase = false
 var player = null
+var direction = "Down"  # Default direction
 
-# combat system.
+# Combat system.
 var health = 125
 var player_inattack_zone = false
 var cooldown = true
 
-# slime damage.
+# Slime damage.
 var damage = 5
 
 func _ready() -> void:
-	$AnimatedSprite2D.play("Idle")
+	animation_player("Down", "idle")
 
 func _physics_process(delta: float) -> void:
 	enemy(delta)
+	deal_with_damage()
 	attack()
-	# deal_with_damage()
 
-# player entering body.
+# Player entering body.
 func _on_detection_area_body_entered(body: Node2D) -> void: # when player enters range.
-	player = body # tells the script to track the player 
-	playerChase = true # gets the sctipt to start following the player.
+	if body.has_method("player"):
+		player = body # tells the script to track the player 
+		playerChase = true # gets the sctipt to start following the player.
 
-# player leaving body.
 func _on_detection_area_body_exited(body: Node2D) -> void: # player leave range.
-	player = null # disables player tracking no target.
-	playerChase = false # disables player chasing script.
+	if body.has_method("player"):
+		player = null # disables player tracking no target.
+		playerChase = false # disables player chasing script.
 
-# Compat system.
+# Combat system.
 func _on_enemy_hit_box_body_entered(body: Node2D) -> void:
 	if body.has_method("player"):
 		player_inattack_zone = true
@@ -40,50 +42,79 @@ func _on_enemy_hit_box_body_exited(body: Node2D) -> void:
 	if body.has_method("player"):
 		player_inattack_zone = false
 
-# dealing damage to enemy.
+# Dealing damage to enemy.
 func deal_with_damage():
 	if player_inattack_zone and Global.player_current_attack:
-			health -= 30 # slimes health pool
-			print("Slime Health: ", health)
-			Global.player_current_attack = false
+		health -= 30
+		print("Slime Health: ", health)
+		Global.player_current_attack = false
 
-# enemy dealing damage to player
+# Enemy dealing damage to player.
 func weapon_time_out() -> void:
 	cooldown = true
-	pass # Replace with function body.
 
 func attack():
-	# find out player in range and cooldown check.
 	if player_inattack_zone and cooldown:
 		var timeout = %Timer
 		cooldown = false
-		# code on how much the player damage is taking.
-		
-		
-		print ("current global health | ", Global.Player_Health)
-		$AnimatedSprite2D.play("Attack")
+		# change the health of player.
+		Global.Player_Health -= damage
+		print("Player Health: ", Global.Player_Health)
+		# animation attack
+		animation_player(direction, "attack")
+		# starts cooldown on attack.
 		timeout.start()
-# Compat end
 
-func enemy(delta): # shows enemy.
-	# michael had a problem with a word called position.
-	# position += (player.position - position) / speed # gets the location of 
-	# changing how enemys engage with movement system.
+# Enemy movement and direction handling.
+func enemy(delta):
 	var velocity = Vector2.ZERO
 	if health <= 0:
-		$AnimatedSprite2D.play("Death")
-		self.queue_free()
+		animation_player(direction, "death")
+		await get_tree().create_timer(0.5).timeout  # Short delay before deleting
+		queue_free()
+		return
 	if playerChase:
-		# movement system 
 		velocity = (player.get_global_position() - position).normalized() * speed * delta
-		$AnimatedSprite2D.play("Walk")
-		if (player.position.x-position.x) < 0:
-			$AnimatedSprite2D.flip_h = true
-		else:
-			$AnimatedSprite2D.flip_h = false
+		update_direction(player.position - position)
+		animation_player(direction, "walk")
 	else:
-		# Gradually slow down when not chasing
 		velocity = lerp(velocity, Vector2.ZERO, 0.07)
-		$AnimatedSprite2D.play("Idle")
-	# move charatur around.
+		animation_player(direction, "idle")
 	move_and_collide(velocity)
+
+func update_direction(movement: Vector2):
+	# get the direction that enemy is moving in.
+	if abs(movement.x) > abs(movement.y):
+		direction = "Right" if movement.x > 0 else "Left"
+	else:
+		direction = "Down" if movement.y > 0 else "Up"
+
+func animation_player(direction, state):
+	var animation = $AnimatedSprite2D
+	match direction:
+		"Right":
+			animation.flip_h = false
+			match state:
+				"attack": animation.play("attack")
+				"walk": animation.play("walk")
+				"death": animation.play("death")
+				_: animation.play("idle")
+		"Left":
+			animation.flip_h = true
+			match state:
+				"attack": animation.play("attack")
+				"walk": animation.play("walk")
+				"death": animation.play("death")
+				_: animation.play("idle")
+		"Down":
+			match state:
+				"attack": animation.play("attack")
+				"walk": animation.play("walk")
+				"death": animation.play("death")
+				_: animation.play("idle")
+		"Up":
+			match state:
+				"attack": animation.play("attack")
+				"walk": animation.play("walk")
+				"death": animation.play("death")
+				_: animation.play("idle")

@@ -65,6 +65,11 @@ region = Rect2(160, 128, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_beirf"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qit8y")
@@ -82,7 +87,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_plxki")
 }],
 "loop": true,
-"name": &"Death",
+"name": &"death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -99,7 +104,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_fhldr")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -122,7 +127,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_b0mq0")
 }],
 "loop": true,
-"name": &"Walk",
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -130,7 +135,7 @@ animations = [{
 radius = 10.198
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2uxcs"]
-radius = 67.0075
+radius = 133.034
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5tp6k"]
 radius = 19.0
@@ -143,9 +148,7 @@ script = ExtResource("1_njp5n")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_beirf")
-animation = &"Idle"
-frame = 2
-frame_progress = 0.628432
+animation = &"idle"
 offset = Vector2(0, -7)
 
 [node name="Body" type="CollisionShape2D" parent="."]
@@ -155,7 +158,7 @@ debug_color = Color(0.8, 0.196078, 0.188235, 0.419608)
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.7
+wait_time = 0.25
 
 [node name="DetectionArea" type="Area2D" parent="."]
 position = Vector2(0, -5)
@@ -173,7 +176,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="Attack" type="CollisionShape2D" parent="Enemy_HitBox"]
-position = Vector2(-50, 10)
+position = Vector2(-50, 7)
 shape = SubResource("CircleShape2D_5tp6k")
 debug_color = Color(0.735356, 0.742409, 0.750494, 0.42)
 

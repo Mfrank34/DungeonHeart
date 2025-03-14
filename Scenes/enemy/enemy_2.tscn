@@ -123,7 +123,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ylnpg")
 }],
 "loop": true,
-"name": &"Attack",
+"name": &"attack",
 "speed": 5.0
 }, {
 "frames": [{
@@ -140,7 +140,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_mdifi")
 }],
 "loop": true,
-"name": &"Death",
+"name": &"death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -163,7 +163,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_0a8yw")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -192,7 +192,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_7ic5y")
 }],
 "loop": true,
-"name": &"Walk",
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -200,7 +200,7 @@ animations = [{
 radius = 13.1529
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2uxcs"]
-radius = 67.0075
+radius = 147.167
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5tp6k"]
 radius = 43.0116
@@ -214,8 +214,7 @@ script = ExtResource("1_b6n7j")
 position = Vector2(-1, -1.00002)
 scale = Vector2(2, 1.823)
 sprite_frames = SubResource("SpriteFrames_527ua")
-animation = &"Attack"
-frame_progress = 0.487994
+animation = &"attack"
 
 [node name="Body" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
@@ -223,6 +222,8 @@ shape = SubResource("CircleShape2D_jg01p")
 debug_color = Color(0.8, 0.196078, 0.188235, 0.419608)
 
 [node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.75
 
 [node name="DetectionArea" type="Area2D" parent="."]
 position = Vector2(0, -5)
@@ -230,7 +231,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="DetectionZone" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(0, 1)
+position = Vector2(-1, 3)
 shape = SubResource("CircleShape2D_2uxcs")
 debug_color = Color(0.618349, 0.821655, 0.891395, 0.42)
 
