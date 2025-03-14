@@ -58,7 +58,8 @@ func attack():
 		var timeout = %Timer
 		cooldown = false
 		# code on how much the player damage is taking.
-		#Global.player_health += 5
+		
+		
 		print ("current global health | ", Global.Player_Health)
 		$AnimatedSprite2D.play("Attack")
 		timeout.start()

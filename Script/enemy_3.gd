@@ -34,7 +34,7 @@ func _on_enemy_hit_box_body_exited(body: Node2D) -> void:
 func deal_with_damage():
 	if player_inattack_zone and Global.player_current_attack:
 			health -= 15 # soldier health pool.
-			print("Soldier Health: ", health)
+			print("Goblin Health: ", health)
 			$AnimatedSprite2D.play("Attack")
 			Global.player_current_attack = false
 # Compat end
