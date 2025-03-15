@@ -1,18 +1,18 @@
 extends CharacterBody2D
 
 # Movement and detection.
-var speed = 75
 var playerChase = false
 var player = null
 var direction = "Down"  # Default direction
 
 # Combat system.
-var health = 125
 var player_inattack_zone = false
 var cooldown = true
 
-# Slime damage.
-var damage = 5
+# Slime Stats
+var damage = 5 # attack damage
+var health = 100 # slimes health 
+var speed = 100 # movement speed.
 
 func _ready() -> void:
 	animation_player("Down", "idle")

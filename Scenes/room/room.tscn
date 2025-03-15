@@ -1384,13 +1384,13 @@ tile_set = SubResource("TileSet_nk5sf")
 use_kinematic_bodies = true
 
 [node name="Enemy" parent="." instance=ExtResource("8_4iblh")]
-position = Vector2(-417, -64)
+position = Vector2(-409, -118)
 
 [node name="Enemy2" parent="." instance=ExtResource("9_ojh4s")]
-position = Vector2(-422, 221)
+position = Vector2(419, 187)
 
 [node name="Enemy3" parent="." instance=ExtResource("10_ilpkg")]
-position = Vector2(-420, 71)
+position = Vector2(424, -128)
 
 [node name="Player" parent="." instance=ExtResource("10_jghof")]
-position = Vector2(64, -60)
+position = Vector2(-5, -11)

@@ -15,18 +15,13 @@ const speed = 100
 const accel = 750 # how fast to top speed
 const friction = 600 # well its friction idk how else to explain...
 # max speed.
-var max_speed = 150 # top speed the player can move at 
+var max_speed = 125 # top speed the player can move at 
 # Dash system
 var dashSpeed = 450
 var dashCoolDown = true 
 # Combat System
-var enemy_inattack_range = false
-var enemy_attack_cooldown = true
-# player health.
-var health = 300
-var player_alive = true
-# player health.
 var player_attack_cooldown = true
+var enemy_inattack_range = false
 # end of combat system. 
 
 func player(): # identifier
@@ -39,14 +34,6 @@ func _ready() -> void:
 func _physics_process(delta):
 	# allows of the player to move and so on...
 	player_movement(delta)
-	 # enemy_attack()
-
-	# when player dead delet player body.
-	if health <= 0:
-		player_alive = false # menu verable set....
-		health = 0
-		print("player has been killed.")
-		self.queue_free()
 
 func get_input():
 	# gets the x and y inputs and normalizes the output and returns it.
@@ -56,7 +43,7 @@ func get_input():
 
 # Dash Start
 func _on_timer_timeout() -> void:
-	max_speed = 150
+	max_speed = 175
 	dashCoolDown = true
 
 func dash():
@@ -75,27 +62,12 @@ func _on_player_hit_box_body_exited(body: Node2D) -> void:
 	if body.has_method("enemy"):
 		enemy_inattack_range = false
 
-func _on_attack_cooldown_timeout() -> void:
-	enemy_attack_cooldown = true
-
 func _on_player_attack_cooldown_timeout() -> void:
 	Global.player_current_attack = false
 	player_attack_cooldown = true
 
-func _on_enemy_attack_cooldown_timeout() -> void:
-	enemy_attack_cooldown = true
-
-func enemy_attack():
-	var cooldown = $Enemy_attack_cooldown
-	if enemy_inattack_range: # find enemy in range
-		if enemy_attack_cooldown: # looks for cooldown.
-			health -= 10
-			print("Player Health: ", health) # debuging
-			enemy_attack_cooldown = false
-			cooldown.start()
-
 func player_attack():
-	var cooldown = $Player_attack_cooldown
+	var cooldown = $Player_Attack_Cooldown
 	if player_attack_cooldown:
 		Global.player_current_attack = true
 		player_attack_cooldown = false

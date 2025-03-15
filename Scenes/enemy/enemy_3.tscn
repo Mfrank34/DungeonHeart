@@ -214,7 +214,7 @@ script = ExtResource("1_7ka4c")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.72)
 sprite_frames = SubResource("SpriteFrames_a4kuv")
-animation = &"walk"
+animation = &"idle"
 
 [node name="Body" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jg01p")
@@ -222,7 +222,7 @@ debug_color = Color(0.8, 0.196078, 0.188235, 0.419608)
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.5
+wait_time = 0.75
 
 [node name="DetectionArea" type="Area2D" parent="."]
 position = Vector2(0, -5)
@@ -244,6 +244,7 @@ position = Vector2(-50, 15)
 shape = SubResource("CircleShape2D_5tp6k")
 debug_color = Color(0.735356, 0.742409, 0.750494, 0.42)
 
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="Enemy_HitBox" to="." method="_on_enemy_hit_box_body_entered"]

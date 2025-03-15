@@ -1,16 +1,18 @@
 extends CharacterBody2D
 
-# movement and detection.
-var speed = 65
+# Movement and detection.
 var playerChase = false
 var player = null
-var direction = true
+var direction = "Down"  # Default direction
 
-# combat system.
-var health = 150
+# Combat system.
 var player_inattack_zone = false
 var cooldown = true
-var damage = 15
+
+# Golbin Stats
+var damage = 15 # attack damage
+var health = 125 # slimes health 
+var speed = 125 # movement speed.
 
 func _ready() -> void:
 	animation_player("Down", "idle")
@@ -18,7 +20,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	enemy(delta)
 	deal_with_damage()
+	attack()
 
+# Player entering body.
 func _on_detection_area_body_entered(body: Node2D) -> void: # when player enters range.
 	if body.has_method("player"):
 		player = body # tells the script to track the player 
@@ -29,7 +33,7 @@ func _on_detection_area_body_exited(body: Node2D) -> void: # player leave range.
 		player = null # disables player tracking no target.
 		playerChase = false # disables player chasing script.
 
-# Compat system.
+# Combat system.
 func _on_enemy_hit_box_body_entered(body: Node2D) -> void:
 	if body.has_method("player"):
 		player_inattack_zone = true
@@ -38,29 +42,32 @@ func _on_enemy_hit_box_body_exited(body: Node2D) -> void:
 	if body.has_method("player"):
 		player_inattack_zone = false
 
+# Dealing damage to enemy.
 func deal_with_damage():
 	if player_inattack_zone and Global.player_current_attack:
-			health -= 15 # soldier health pool.
-			print("Goblin Health: ", health)
-			$AnimatedSprite2D.play("Attack")
-			Global.player_current_attack = false
+		health -= 30
+		print("Golbin Health: ", health)
+		Global.player_current_attack = false
 
-func weapon_time_out() -> void:
+func _on_timer_timeout() -> void:
+	#print("Golbin Debug | timer off")
 	cooldown = true
 
 func attack():
+	# detection you know, so sick of this not working!
 	if player_inattack_zone and cooldown:
 		var timeout = %Timer
 		cooldown = false
-		# change the health of player.
+		#rint("Golbin Debug | timer on")
+		# dealin with player damage
 		Global.Player_Health -= damage
 		print("Player Health: ", Global.Player_Health)
 		# animation attack
 		animation_player(direction, "attack")
-		# starts cooldown on attack.
+		# starting timer.
 		timeout.start()
-# Compat end
 
+# Enemy movement and direction handling.
 func enemy(delta):
 	var velocity = Vector2.ZERO
 	if health <= 0:
@@ -68,7 +75,6 @@ func enemy(delta):
 		await get_tree().create_timer(0.5).timeout  # Short delay before deleting
 		queue_free()
 		return
-
 	if playerChase:
 		velocity = (player.get_global_position() - position).normalized() * speed * delta
 		update_direction(player.position - position)

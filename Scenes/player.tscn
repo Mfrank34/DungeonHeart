@@ -421,6 +421,7 @@ height = 26.0
 radius = 33.3766
 
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.75, 0.75)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_2ypk5")
@@ -440,6 +441,10 @@ debug_color = Color(0.733158, 0.0442776, 0.0224947, 0.419608)
 wait_time = 0.2
 one_shot = true
 
+[node name="Player_Attack_Cooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+
 [node name="Player_HitBox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
@@ -449,14 +454,7 @@ position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_vkfq8")
 debug_color = Color(0.643533, 0.623174, 0.636412, 0.42)
 
-[node name="Enemy_attack_cooldown" type="Timer" parent="."]
-wait_time = 0.5
-
-[node name="Player_attack_cooldown" type="Timer" parent="."]
-wait_time = 0.5
-
 [connection signal="timeout" from="dash_cooldown" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Player_Attack_Cooldown" to="." method="_on_player_attack_cooldown_timeout"]
 [connection signal="body_entered" from="Player_HitBox" to="." method="_on_player_hit_box_body_entered"]
 [connection signal="body_exited" from="Player_HitBox" to="." method="_on_player_hit_box_body_exited"]
-[connection signal="timeout" from="Enemy_attack_cooldown" to="." method="_on_enemy_attack_cooldown_timeout"]
-[connection signal="timeout" from="Player_attack_cooldown" to="." method="_on_player_attack_cooldown_timeout"]

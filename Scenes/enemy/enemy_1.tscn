@@ -135,7 +135,7 @@ animations = [{
 radius = 10.198
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2uxcs"]
-radius = 133.034
+radius = 99.0454
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5tp6k"]
 radius = 19.0
@@ -148,7 +148,7 @@ script = ExtResource("1_njp5n")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_beirf")
-animation = &"idle"
+animation = &"attack"
 offset = Vector2(0, -7)
 
 [node name="Body" type="CollisionShape2D" parent="."]
@@ -158,7 +158,7 @@ debug_color = Color(0.8, 0.196078, 0.188235, 0.419608)
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.25
+wait_time = 0.5
 
 [node name="DetectionArea" type="Area2D" parent="."]
 position = Vector2(0, -5)
