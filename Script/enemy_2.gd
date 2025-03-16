@@ -62,6 +62,7 @@ func attack():
 		print("Player Health: ", Global.Player_Health)
 		# animation attack
 		animation_player(direction, "attack")
+		await get_tree().create_timer(0.5).timeoutsd
 		# starts cooldown on attack.
 		timeout.start()
 

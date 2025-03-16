@@ -1,6 +1,5 @@
 extends Node
 
-
 # global player data.
 var Player_Alive = true
 var Player_Max_Health = 300
