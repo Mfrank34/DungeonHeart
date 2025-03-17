@@ -11,7 +11,11 @@ config_version=5
 [application]
 
 config/name="DungeonHeart"
+<<<<<<< Updated upstream
 run/main_scene="uid://drba331jhyolb"
+=======
+run/main_scene="uid://chb2py77gd4c1"
+>>>>>>> Stashed changes
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://Textures/icon.svg"
 

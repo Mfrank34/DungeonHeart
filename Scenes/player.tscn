@@ -1,7 +1,12 @@
 [gd_scene load_steps=57 format=3 uid="uid://ddjqldgx6kmu4"]
 
+<<<<<<< Updated upstream
 [ext_resource type="Script" uid="uid://dtt34cooos7uf" path="res://Script/player.gd" id="1_2ypk5"]
 [ext_resource type="Texture2D" uid="uid://dnjpbrktfr7a0" path="res://Textures/Player/player.png" id="2_5ue2q"]
+=======
+[ext_resource type="Script" uid="uid://d1pie5geswavy" path="res://Script/player.gd" id="1_2ypk5"]
+[ext_resource type="Texture2D" path="res://Textures/Player/player.png" id="2_5ue2q"]
+>>>>>>> Stashed changes
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4iima"]
 atlas = ExtResource("2_5ue2q")
