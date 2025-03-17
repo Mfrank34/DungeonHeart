@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cx02ohk5x31gl" path="res://Textures/SetParts/TX Tileset Wall.png" id="4_41voj"]
 [ext_resource type="Texture2D" uid="uid://cy61v4s0ghcdv" path="res://Textures/SetParts/TX Struct.png" id="5_6f4so"]
 [ext_resource type="Texture2D" uid="uid://dsk3g1s5nkqwb" path="res://Textures/tilesets/walls/walls.png" id="6_fyu55"]
-[ext_resource type="PackedScene" uid="uid://cqaw8vpn24dph" path="res://Scenes/enemy/Enemy_1.tscn" id="8_4iblh"]
-[ext_resource type="PackedScene" uid="uid://c5opcymfjgf6x" path="res://Scenes/enemy/Enemy_2.tscn" id="9_ojh4s"]
-[ext_resource type="PackedScene" uid="uid://nxeecqvdnpf0" path="res://Scenes/enemy/Enemy_3.tscn" id="10_ilpkg"]
+[ext_resource type="PackedScene" uid="uid://cqaw8vpn24dph" path="res://Scenes/Enemy/Enemy_1.tscn" id="8_4iblh"]
+[ext_resource type="PackedScene" uid="uid://c5opcymfjgf6x" path="res://Scenes/Enemy/Enemy_2.tscn" id="9_ojh4s"]
+[ext_resource type="PackedScene" uid="uid://nxeecqvdnpf0" path="res://Scenes/Enemy/Enemy_3.tscn" id="10_ilpkg"]
 [ext_resource type="PackedScene" uid="uid://ddjqldgx6kmu4" path="res://Scenes/Player.tscn" id="10_jghof"]
 
 [sub_resource type="TileSet" id="TileSet_w8app"]

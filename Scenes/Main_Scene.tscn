@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bp8naeyy66kcv"]
 
-[ext_resource type="Script" uid="uid://wyj6c6q2lrqw" path="res://Script/main_scene.gd" id="1_52fb6"]
+[ext_resource type="Script" uid="uid://wyj6c6q2lrqw" path="res://Script/main_scene.gd" id="1_t33is"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_52fb6")
+script = ExtResource("1_t33is")
 
 [node name="HUD" type="Control" parent="."]
 anchors_preset = 0
@@ -28,15 +28,24 @@ offset_bottom = 40.0
 
 [node name="Start" type="Button" parent="Menu"]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 459.0
+offset_top = 428.0
+offset_right = 760.0
+offset_bottom = 506.0
+text = "Start"
 
 [node name="Exit" type="Button" parent="Menu"]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 458.0
+offset_top = 526.0
+offset_right = 763.0
+offset_bottom = 598.0
+text = "Exit"
 
 [node name="Main2D" type="Node2D" parent="."]
 
 [node name="Camera" type="Camera2D" parent="Main2D"]
 anchor_mode = 0
+
+[connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/Exit" to="." method="_on_exit_pressed"]

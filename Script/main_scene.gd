@@ -18,7 +18,7 @@ func unload_level():
 
 func load_level(level_name : String):
 	unload_level()
-	var level_path := "res://Scenes/room/%s.tscn" % level_name
+	var level_path := "res://Scenes/Room/%s.tscn" % level_name
 	var level_resource := load(level_path)
 	
 	if level_resource:
@@ -29,6 +29,20 @@ func load_level(level_name : String):
 		print("Loaded level at:", level_instance.position)
 	else:
 		print("Error: Level not found at", level_path)  # Debugging
+
+func load_enemy(enemy_name: String, min_pos: Vector2, max_pos: Vector2):
+	var enemy_path := "res://Scenes/Enemy/%s.tscn" % enemy_name
+	var enemy_resource := load(enemy_path)
+	if enemy_resource:
+		var enemy_instance = enemy_resource.instantiate()
+		main_2d.add_child(enemy_instance)
+		# Generate a random position within the given range
+		var random_x = randf_range(min_pos.x, max_pos.x)
+		var random_y = randf_range(min_pos.y, max_pos.y)
+		enemy_instance.position = Vector2(random_x, random_y)
+		print("Spawned enemy at:", enemy_instance.position)
+	else:
+		print("Error: Enemy not found at", enemy_path)  # Debugging
 
 func _on_start_pressed() -> void:
 	load_level("Level_1")

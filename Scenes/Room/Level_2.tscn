@@ -1,16 +1,14 @@
-[gd_scene load_steps=13 format=4 uid="uid://b3lm8ajke8uka"]
+[gd_scene load_steps=11 format=4 uid="uid://b3lm8ajke8uka"]
 
-[ext_resource type="Texture2D" uid="uid://bjm4rikksejc1" path="res://Textures/SetParts/TX Tileset Stone Ground.png" id="1_2338d"]
-[ext_resource type="Texture2D" uid="uid://cx02ohk5x31gl" path="res://Textures/SetParts/TX Tileset Wall.png" id="2_kps22"]
-[ext_resource type="Texture2D" uid="uid://di45xogm1wxoi" path="res://Textures/SetParts/TX Tileset Grass.png" id="3_mihni"]
-[ext_resource type="Texture2D" uid="uid://dq8xu0f865qbr" path="res://Textures/SetParts/TX Plant.png" id="4_201xp"]
-[ext_resource type="PackedScene" uid="uid://ddjqldgx6kmu4" path="res://Scenes/Player.tscn" id="5_dicuq"]
-[ext_resource type="PackedScene" uid="uid://c5opcymfjgf6x" path="res://Scenes/enemy/Enemy_2.tscn" id="6_pm543"]
+[ext_resource type="Texture2D" uid="uid://bjm4rikksejc1" path="res://Textures/SetParts/TX Tileset Stone Ground.png" id="1_nudst"]
+[ext_resource type="Texture2D" uid="uid://cx02ohk5x31gl" path="res://Textures/SetParts/TX Tileset Wall.png" id="2_pf5wl"]
+[ext_resource type="Texture2D" uid="uid://di45xogm1wxoi" path="res://Textures/SetParts/TX Tileset Grass.png" id="3_g2fkx"]
+[ext_resource type="Texture2D" uid="uid://dq8xu0f865qbr" path="res://Textures/SetParts/TX Plant.png" id="4_tfi26"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5dwol"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nuc81"]
-texture = ExtResource("1_2338d")
+texture = ExtResource("1_nudst")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -213,7 +211,7 @@ texture = ExtResource("1_2338d")
 15:15/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sp6w0"]
-texture = ExtResource("2_kps22")
+texture = ExtResource("2_pf5wl")
 2:2/0 = 0
 2:2/0/terrain_set = 0
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -728,7 +726,7 @@ texture = ExtResource("2_kps22")
 11:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m6xms"]
-texture = ExtResource("3_mihni")
+texture = ExtResource("3_g2fkx")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -987,7 +985,7 @@ texture = ExtResource("3_mihni")
 15:15/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d1g1w"]
-texture = ExtResource("4_201xp")
+texture = ExtResource("4_tfi26")
 4:0/0 = 0
 5:0/0 = 0
 3:1/0 = 0
@@ -1283,12 +1281,3 @@ light_mask = 3
 z_index = 10
 use_parent_material = true
 tile_set = SubResource("TileSet_a1a6a")
-
-[node name="Player" parent="." instance=ExtResource("5_dicuq")]
-visible = false
-position = Vector2(363.333, 231.333)
-platform_wall_layers = 2
-
-[node name="Enemy" parent="." instance=ExtResource("6_pm543")]
-visible = false
-position = Vector2(150.667, 156)
