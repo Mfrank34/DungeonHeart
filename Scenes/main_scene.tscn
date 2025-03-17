@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjdw3twu1r5vn"]
+
+[ext_resource type="Script" path="res://Scenes/main_scene.gd" id="1_52fb6"]
+
+[node name="MainScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1151.0
+offset_bottom = -647.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_52fb6")
+
+[node name="HUD" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Health" type="Label" parent="HUD"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Menu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 53.0
+offset_top = 220.0
+offset_right = 79.0
+offset_bottom = 231.0
+text = "Start
+"
+
+[node name="Exit" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = 221.0
+offset_right = -64.0
+offset_bottom = 232.0
+text = "Exit
+"
+
+[node name="Main2D" type="Node2D" parent="."]
+
+[node name="Camera" type="Camera2D" parent="Main2D"]
+
+[connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/Exit" to="." method="_on_exit_pressed"]
