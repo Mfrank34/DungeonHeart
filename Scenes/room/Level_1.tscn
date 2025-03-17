@@ -1,16 +1,16 @@
 [gd_scene load_steps=13 format=4 uid="uid://dxtuesly32qw1"]
 
-[ext_resource type="Texture2D" uid="uid://bjm4rikksejc1" path="res://Textures/SetParts/TX Tileset Stone Ground.png" id="1_tst1k"]
-[ext_resource type="Texture2D" uid="uid://cx02ohk5x31gl" path="res://Textures/SetParts/TX Tileset Wall.png" id="2_utjbo"]
-[ext_resource type="Texture2D" uid="uid://di45xogm1wxoi" path="res://Textures/SetParts/TX Tileset Grass.png" id="3_5dwol"]
-[ext_resource type="Texture2D" uid="uid://dq8xu0f865qbr" path="res://Textures/SetParts/TX Plant.png" id="4_utjbo"]
-[ext_resource type="PackedScene" uid="uid://ddjqldgx6kmu4" path="res://Scenes/player.tscn" id="5_5dwol"]
-[ext_resource type="PackedScene" uid="uid://c5opcymfjgf6x" path="res://Scenes/enemy/enemy_2.tscn" id="6_i5o5e"]
+[ext_resource type="Texture2D" uid="uid://bjm4rikksejc1" path="res://Textures/SetParts/TX Tileset Stone Ground.png" id="1_3rmos"]
+[ext_resource type="Texture2D" uid="uid://cx02ohk5x31gl" path="res://Textures/SetParts/TX Tileset Wall.png" id="2_i4u4u"]
+[ext_resource type="Texture2D" uid="uid://di45xogm1wxoi" path="res://Textures/SetParts/TX Tileset Grass.png" id="3_tsqd4"]
+[ext_resource type="Texture2D" uid="uid://dq8xu0f865qbr" path="res://Textures/SetParts/TX Plant.png" id="4_bn4kg"]
+[ext_resource type="PackedScene" uid="uid://ddjqldgx6kmu4" path="res://Scenes/Player.tscn" id="5_m7nhw"]
+[ext_resource type="PackedScene" uid="uid://c5opcymfjgf6x" path="res://Scenes/enemy/Enemy_2.tscn" id="6_velpn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i5o5e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2d8hc"]
-texture = ExtResource("1_tst1k")
+texture = ExtResource("1_3rmos")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -213,7 +213,7 @@ texture = ExtResource("1_tst1k")
 15:15/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cdnj3"]
-texture = ExtResource("2_utjbo")
+texture = ExtResource("2_i4u4u")
 2:2/0 = 0
 2:2/0/terrain_set = 0
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -728,7 +728,7 @@ texture = ExtResource("2_utjbo")
 11:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jyg1h"]
-texture = ExtResource("3_5dwol")
+texture = ExtResource("3_tsqd4")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -987,7 +987,7 @@ texture = ExtResource("3_5dwol")
 15:15/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sbr2y"]
-texture = ExtResource("4_utjbo")
+texture = ExtResource("4_bn4kg")
 4:0/0 = 0
 5:0/0 = 0
 3:1/0 = 0
@@ -1284,9 +1284,9 @@ z_index = 10
 use_parent_material = true
 tile_set = SubResource("TileSet_jyg1h")
 
-[node name="Player" parent="." instance=ExtResource("5_5dwol")]
+[node name="Player" parent="." instance=ExtResource("5_m7nhw")]
 position = Vector2(363.333, 231.333)
 platform_wall_layers = 2
 
-[node name="Enemy" parent="." instance=ExtResource("6_i5o5e")]
+[node name="Enemy" parent="." instance=ExtResource("6_velpn")]
 position = Vector2(150.667, 156)

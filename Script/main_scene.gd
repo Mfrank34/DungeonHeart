@@ -31,7 +31,7 @@ func load_level(level_name : String):
 		print("Error: Level not found at", level_path)  # Debugging
 
 func _on_start_pressed() -> void:
-	load_level("Outside")
+	load_level("Level_1")
 
 func _on_exit_pressed() -> void:
 	unload_level()
