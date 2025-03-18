@@ -5,14 +5,18 @@ extends Control
 @onready var hud : Control = $HUD
 @onready var menu : Control = $Menu
 @onready var main_2d : Node2D = $Main2D
+@onready var enemy_2d: Node2D = $Enemy2D
 @onready var camera : Camera2D = $Main2D/Camera
 
 # setting for maps
 var level_instance : Node2D
+var enemy_instance : Node2D
 var maps = ["Level_1", "Level_2", "Level_3"]
 var enemys = ["Enemy_1", "Enemy_2", "Enemy_3"]
-var map_limits_min = Vector2 (25, 15) # Top-left corner
-var map_limits_max = Vector2 (24 , 15) # Bottom-right corner
+var total_map = 2 # 0 to 2
+var total_enemy = 2 # 0 to 2 
+var map_limits_min = Vector2 (1,4) # Top-left corner
+var map_limits_max = Vector2 (45, 25) # Bottom-right corner
 
 func _ready() -> void:
 	pass
@@ -43,18 +47,32 @@ func load_enemy(enemy_name: String, min_pos: Vector2, max_pos: Vector2):
 	var enemy_resource := load(enemy_path)
 	if enemy_resource:
 		var enemy_instance = enemy_resource.instantiate()
-		main_2d.add_child(enemy_instance)
-		# Generate a random position within the given range
-		var random_x = randf_range(min_pos.x, max_pos.x)
-		var random_y = randf_range(min_pos.y, max_pos.y)
-		enemy_instance.position = Vector2(random_x, random_y)
-		print("Spawned enemy at:", enemy_instance.position)
+		print("Instantiated enemy:", enemy_instance)  # Debugging
+		if enemy_2d:
+			enemy_2d.add_child(enemy_instance)
+			# Generate a random position within the given range
+			var random_x = randf_range(min_pos.x, max_pos.x)
+			var random_y = randf_range(min_pos.y, max_pos.y)
+			enemy_instance.position = Vector2(random_x, random_y)
+			print("Spawned enemy at:", enemy_instance.position)
+		else:
+			print("Error: enemy_2d is null!")
 	else:
-		print("Error: Enemy not found at", enemy_path)  # Debugging
+		print("Error: Enemy not found at", enemy_path)
+
+func level_manager() -> void:
+	var level_gen = randi_range(0, total_map) # 1 to 3 random
+	load_level(maps[level_gen]) # load a random level.
+	# load in different enemys to kill.
+	var enemy_amount = randi_range(1, 6)
+	Global.amount_enemys = enemy_amount
+	print("Enemy amount: ", Global.amount_enemys)
+	for enemy in range(enemy_amount):
+		var enemy_type = randi_range(0, total_enemy)
+		load_enemy(enemys[enemy_type], map_limits_min, map_limits_max)
 
 func _on_start_pressed() -> void:
-	load_level("Level_1")
-	load_enemy("Enemy_1", map_limits_min, map_limits_max)
+	level_manager()
 
 
 func _on_exit_pressed() -> void:

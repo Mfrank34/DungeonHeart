@@ -7,3 +7,6 @@ var Player_Health = 300
 # combat system.
 var player_current_attack = false
 var Player_Damage_Output = 20
+
+# enemy tracking
+var amount_enemys = 0

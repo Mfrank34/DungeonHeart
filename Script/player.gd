@@ -7,7 +7,6 @@ extends CharacterBody2D
 # Animation player
 var direction = "none"
 var status = "none"
-
 # movement values
 var input = Vector2.ZERO # vector information from awsd.
 # movement feel.
@@ -126,6 +125,7 @@ func animation_player(direction, state):
 func player_movement(delta):
 	# death animation.
 	if Global.Player_Health <= 0:
+		Global.Player_Alive = false
 		animation_player(direction, "death")
 		await get_tree().create_timer(0.5).timeout  # Short delay before deleting
 		queue_free()
