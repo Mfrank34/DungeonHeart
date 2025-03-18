@@ -2,10 +2,16 @@ extends Control
 # Thanks to this guy for help: https://youtu.be/a0UQ-t-vuzY?si=woHZ2jEeqXjkr1nm
 
 # ready on load
+# HUD items
 @onready var hud : Control = $HUD
 @onready var menu : Control = $Menu
+# map events
 @onready var main_2d : Node2D = $Main2D
 @onready var enemy_2d: Node2D = $Enemy2D
+# spawning
+@onready var top_left : Marker2D = $Enemy2D/TopLeft
+@onready var bottom_right : Marker2D = $Enemy2D/BottomRight
+# camera
 @onready var camera : Camera2D = $Main2D/Camera
 
 # setting for maps
@@ -42,7 +48,7 @@ func load_level(level_name : String):
 	else:
 		print("Error: Level not found at", level_path)  # Debugging
 
-func load_enemy(enemy_name: String, min_pos: Vector2, max_pos: Vector2):
+func load_enemy(enemy_name: String):
 	var enemy_path := "res://Scenes/Enemy/%s.tscn" % enemy_name
 	var enemy_resource := load(enemy_path)
 	if enemy_resource:
@@ -50,6 +56,9 @@ func load_enemy(enemy_name: String, min_pos: Vector2, max_pos: Vector2):
 		print("Instantiated enemy:", enemy_instance)  # Debugging
 		if enemy_2d:
 			enemy_2d.add_child(enemy_instance)
+			# spawn coors
+			var min_pos = top_left.position  # Top-left position (min)
+			var max_pos = bottom_right.position  # Bottom-right position (max)
 			# Generate a random position within the given range
 			var random_x = randf_range(min_pos.x, max_pos.x)
 			var random_y = randf_range(min_pos.y, max_pos.y)
@@ -69,11 +78,13 @@ func level_manager() -> void:
 	print("Enemy amount: ", Global.amount_enemys)
 	for enemy in range(enemy_amount):
 		var enemy_type = randi_range(0, total_enemy)
-		load_enemy(enemys[enemy_type], map_limits_min, map_limits_max)
+		load_enemy(enemys[enemy_type])
+
+func game_manager():
+	pass
 
 func _on_start_pressed() -> void:
-	level_manager()
-
+	game_manager()
 
 func _on_exit_pressed() -> void:
 	unload_level()

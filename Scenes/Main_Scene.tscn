@@ -49,5 +49,11 @@ anchor_mode = 0
 
 [node name="Enemy2D" type="Node2D" parent="."]
 
+[node name="TopLeft" type="Marker2D" parent="Enemy2D"]
+position = Vector2(67, 74)
+
+[node name="BottomRight" type="Marker2D" parent="Enemy2D"]
+position = Vector2(1096, 590)
+
 [connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Exit" to="." method="_on_exit_pressed"]
