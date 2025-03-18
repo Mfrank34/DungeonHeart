@@ -18,8 +18,12 @@ offset_bottom = 40.0
 
 [node name="Health" type="Label" parent="HUD"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 14.0
+offset_top = 577.0
+offset_right = 396.0
+offset_bottom = 626.0
+text = "Health
+"
 
 [node name="Menu" type="Control" parent="."]
 anchors_preset = 0
@@ -50,10 +54,10 @@ anchor_mode = 0
 [node name="Enemy2D" type="Node2D" parent="."]
 
 [node name="TopLeft" type="Marker2D" parent="Enemy2D"]
-position = Vector2(67, 74)
+position = Vector2(69, 70)
 
 [node name="BottomRight" type="Marker2D" parent="Enemy2D"]
-position = Vector2(1096, 590)
+position = Vector2(1080, 592)
 
 [connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Exit" to="." method="_on_exit_pressed"]

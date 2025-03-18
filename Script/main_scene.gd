@@ -4,6 +4,7 @@ extends Control
 # ready on load
 # HUD items
 @onready var hud : Control = $HUD
+@onready var health : Label = $HUD/Health
 @onready var menu : Control = $Menu
 # map events
 @onready var main_2d : Node2D = $Main2D
@@ -26,6 +27,9 @@ var map_limits_max = Vector2 (45, 25) # Bottom-right corner
 
 func _ready() -> void:
 	pass
+
+func _physics_process(delta):
+	update_health_display()
 
 func unload_level():
 	# Unloads the current level
@@ -79,6 +83,10 @@ func level_manager() -> void:
 	for enemy in range(enemy_amount):
 		var enemy_type = randi_range(0, total_enemy)
 		load_enemy(enemys[enemy_type])
+
+func update_health_display() -> void:
+	# Update the health label with the current player's health from Global
+	health.text = "Health: %d" % Global.Player_Health
 
 func game_manager():
 	pass
