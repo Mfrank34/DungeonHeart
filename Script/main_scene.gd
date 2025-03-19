@@ -5,6 +5,7 @@ extends Control
 # HUD items
 @onready var hud : Control = $HUD
 @onready var health : Label = $HUD/Health
+@onready var enemy_amount : Label = $HUD/EnemyLeft
 @onready var buffs : Label = $HUD/Buffss
 @onready var menu : Control = $Menu
 # map events
@@ -103,8 +104,8 @@ func load_player():
 	else:
 		print("Error: Player scene not found at", player_path)
 
-
 func level_manager() -> void:
+	load_player()
 	var level_gen = randi_range(0, total_map) # 1 to 3 random
 	load_level(maps[level_gen]) # load a random level.
 	# load in different enemys to kill.
@@ -118,16 +119,16 @@ func level_manager() -> void:
 func updates_display() -> void:
 	# Update the health label with the current player's health from Global
 	health.text = "Health: %d" % Global.Player_Health
+	enemy_amount.text = "Enemy left: %d" % Global.amount_enemys
 
 func game_manager():
 	# On start, load map
+	button_toggle(true)
 	while Global.Player_Alive:
-		button_toggle(true)
-		load_player()  # Ensure this function is properly defined and loads the player correctly
-		# Check if all enemies are gone
 		if Global.amount_enemys == 0:
-			await get_tree().create_timer(10).timeout  # Creating a timer
-			level_manager()  # Load the next level
+			# await get_tree().create_timer(5).timeout
+			level_manager()  
+		# Check if all enemies are gone
 			# TODO: Implement a system for buffs if needed
 	# Player is no longer alive, handle game over logic
 	unload_level()
@@ -137,9 +138,8 @@ func game_manager():
 	Global.Player_Alive = true
 	Global.amount_enemys = 0
 
-
 func _on_start_pressed() -> void:
-	level_manager()
+	game_manager()
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
