@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var animation = $AnimatedSprite2D
 # Movement and detection.
 var playerChase = false
 var player = null
@@ -93,7 +94,6 @@ func update_direction(movement: Vector2):
 		direction = "Down" if movement.y > 0 else "Up"
 
 func animation_player(direction, state):
-	var animation = $AnimatedSprite2D
 	match direction:
 		"Right":
 			animation.flip_h = false

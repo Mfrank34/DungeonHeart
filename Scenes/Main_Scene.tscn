@@ -12,18 +12,31 @@ grow_vertical = 2
 script = ExtResource("1_t33is")
 
 [node name="HUD" type="Control" parent="."]
+z_index = 10
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Health" type="Label" parent="HUD"]
+z_index = 10
 layout_mode = 0
-offset_left = 14.0
-offset_top = 577.0
-offset_right = 396.0
-offset_bottom = 626.0
+offset_left = 38.0
+offset_top = 561.0
+offset_right = 152.0
+offset_bottom = 610.0
 text = "Health
 "
+horizontal_alignment = 1
+
+[node name="Buffs" type="Label" parent="HUD"]
+z_index = 10
+layout_mode = 0
+offset_left = 976.0
+offset_top = 30.0
+offset_right = 1122.0
+offset_bottom = 209.0
+text = "Buffs"
+horizontal_alignment = 1
 
 [node name="Menu" type="Control" parent="."]
 anchors_preset = 0
@@ -54,10 +67,10 @@ anchor_mode = 0
 [node name="Enemy2D" type="Node2D" parent="."]
 
 [node name="TopLeft" type="Marker2D" parent="Enemy2D"]
-position = Vector2(69, 70)
+position = Vector2(417, 80)
 
 [node name="BottomRight" type="Marker2D" parent="Enemy2D"]
-position = Vector2(1080, 592)
+position = Vector2(1091, 284)
 
 [connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Exit" to="." method="_on_exit_pressed"]

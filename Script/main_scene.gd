@@ -5,6 +5,7 @@ extends Control
 # HUD items
 @onready var hud : Control = $HUD
 @onready var health : Label = $HUD/Health
+@onready var buffs : Label = $HUD/Buffss
 @onready var menu : Control = $Menu
 # map events
 @onready var main_2d : Node2D = $Main2D
@@ -18,24 +19,30 @@ extends Control
 # setting for maps
 var level_instance : Node2D
 var enemy_instance : Node2D
-var maps = ["Level_1", "Level_2", "Level_3"]
-var enemys = ["Enemy_1", "Enemy_2", "Enemy_3"]
-var total_map = 2 # 0 to 2
-var total_enemy = 2 # 0 to 2 
-var map_limits_min = Vector2 (1,4) # Top-left corner
-var map_limits_max = Vector2 (45, 25) # Bottom-right corner
+var maps = ["Level_1", "Level_2", "Level_3"] # name of maps
+var enemys = ["Enemy_1", "Enemy_2", "Enemy_3"] # name of enemys
+var total_map = (maps.size() - 1) # total index - 1 to put in range
+var total_enemy = (enemys.size() - 1)
+var map_limits_min
+var map_limits_max
 
 func _ready() -> void:
 	pass
 
 func _physics_process(delta):
-	update_health_display()
+	updates_display()
 
 func unload_level():
 	# Unloads the current level
 	if level_instance:
 		level_instance.queue_free()
 		level_instance = null
+
+func button_toggle(state):
+	# true to disable | fasle to enable
+	for button in menu.get_children():
+		if button is Button:
+			button.disabled = state
 
 func load_level(level_name : String):
 	unload_level()
@@ -73,6 +80,10 @@ func load_enemy(enemy_name: String):
 	else:
 		print("Error: Enemy not found at", enemy_path)
 
+func load_player():
+	pass
+	
+
 func level_manager() -> void:
 	var level_gen = randi_range(0, total_map) # 1 to 3 random
 	load_level(maps[level_gen]) # load a random level.
@@ -84,15 +95,30 @@ func level_manager() -> void:
 		var enemy_type = randi_range(0, total_enemy)
 		load_enemy(enemys[enemy_type])
 
-func update_health_display() -> void:
+
+func updates_display() -> void:
 	# Update the health label with the current player's health from Global
 	health.text = "Health: %d" % Global.Player_Health
 
 func game_manager():
-	pass
+	# on start load map.
+	while Global.Player_Alive:
+		button_toggle(true)
+		# load in player charature
+		if Global.amount_enemys == 0:
+			await get_tree().create_timer(10).timeout # creating a timer
+			level_manager()
+			# create system for buffs
+	if not Global.Player_Alive:
+		unload_level()
+		button_toggle(false)
+		# reset vaules
+		Global.Player_Health = Global.Player_Max_Health
+		Global.Player_Alive = true
+		Global.amount_enemys = 0
 
 func _on_start_pressed() -> void:
-	game_manager()
+	level_manager()
 
 func _on_exit_pressed() -> void:
-	unload_level()
+	get_tree().quit()
