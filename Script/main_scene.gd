@@ -5,8 +5,8 @@ extends Control
 # HUD items
 @onready var hud : Control = $HUD
 @onready var health : Label = $HUD/Health
-@onready var enemy_amount : Label = $HUD/EnemyLeft
-@onready var buffs : Label = $HUD/Buffss
+@onready var alive_enemys_count : Label = $HUD/EnemyLeft
+@onready var buffs : Label = $HUD/Buffs
 @onready var menu : Control = $Menu
 # map events
 @onready var main_2d : Node2D = $Main2D
@@ -28,24 +28,32 @@ var maps = ["Level_1", "Level_2", "Level_3"] # name of maps
 var enemys = ["Enemy_1", "Enemy_2", "Enemy_3"] # name of enemys
 var total_map = (maps.size() - 1) # total index - 1 to put in range
 var total_enemy = (enemys.size() - 1)
-
-# limit map spawning .
+# limit map spawning.
 var map_limits_min
 var map_limits_max
-# file locations
-var player_path := "res://Script/player.gd"
+# run level
+var level_number = 1
 
 func _ready() -> void:
 	pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	updates_display()
+	game_manager()
 
 func unload_level():
 	# Unloads the current level
 	if level_instance:
 		level_instance.queue_free()
 		level_instance = null
+
+func unload_enemy():
+	# Unloads all enemy instances
+	if enemy_2d:
+		for child in enemy_2d.get_children():
+			if child is Marker2D: # bug fix with unloading. 
+				continue
+			child.queue_free()
 
 func button_toggle(state):
 	# true to disable | fasle to enable
@@ -72,7 +80,7 @@ func load_enemy(enemy_name: String):
 	var enemy_path := "res://Scenes/Enemy/%s.tscn" % enemy_name
 	var enemy_resource := load(enemy_path)
 	if enemy_resource:
-		var enemy_instance = enemy_resource.instantiate()
+		enemy_instance = enemy_resource.instantiate()
 		print("Instantiated enemy:", enemy_instance)  # Debugging
 		if enemy_2d:
 			enemy_2d.add_child(enemy_instance)
@@ -90,22 +98,26 @@ func load_enemy(enemy_name: String):
 		print("Error: Enemy not found at", enemy_path)
 
 func load_player():
-	var player_path := "res://Scenes/Player.tscn"
-	var player_resource := load(player_path)
-	if player_resource:
-		var player_instance = player_resource.instantiate()
-		if player_2d:  # Ensure player_2d is a valid node
-			player_2d.add_child(player_instance)
-			var spawn = player_spawn.position  # Gets location
-			player_instance.position = spawn  # Spawns on marker
-			print("Spawned player at:", player_instance.position)
+	if not player_instance:
+		var player_path := "res://Scenes/Player.tscn"
+		var player_resource := load(player_path)
+		if player_resource:
+			player_instance = player_resource.instantiate()
+			if player_2d:  # Ensure player_2d is a valid node
+				player_2d.add_child(player_instance)
+				var spawn = player_spawn.position  # Gets location
+				player_instance.position = spawn  # Spawns on marker
+				print("Spawned player at:", player_instance.position)
+			else:
+				print("Error: player_2d is null!")
 		else:
-			print("Error: player_2d is null!")
+			print("Error: Player scene not found at", player_path)
 	else:
-		print("Error: Player scene not found at", player_path)
+		# move player back to spawn location
+		player_instance.position = player_spawn.position
+		print("Player repositioned to:", player_instance.position)
 
 func level_manager() -> void:
-	load_player()
 	var level_gen = randi_range(0, total_map) # 1 to 3 random
 	load_level(maps[level_gen]) # load a random level.
 	# load in different enemys to kill.
@@ -119,27 +131,31 @@ func level_manager() -> void:
 func updates_display() -> void:
 	# Update the health label with the current player's health from Global
 	health.text = "Health: %d" % Global.Player_Health
-	enemy_amount.text = "Enemy left: %d" % Global.amount_enemys
+	alive_enemys_count.text = "Enemy left: %d" % Global.amount_enemys
 
 func game_manager():
-	# On start, load map
-	button_toggle(true)
-	while Global.Player_Alive:
+	if Global.Player_Alive:
+		button_toggle(true)
+		print("state of amount of enemys: ", Global.amount_enemys)
 		if Global.amount_enemys == 0:
-			# await get_tree().create_timer(5).timeout
-			level_manager()  
-		# Check if all enemies are gone
-			# TODO: Implement a system for buffs if needed
-	# Player is no longer alive, handle game over logic
-	unload_level()
-	button_toggle(false)
-	# Reset values
-	Global.Player_Health = Global.Player_Max_Health
-	Global.Player_Alive = true
-	Global.amount_enemys = 0
+			if not level_number == 1:
+				await get_tree().create_timer(10).timeout
+			level_manager()
+			level_number += 1
+	else:
+		# Player is dead, unload level and enemies
+		unload_level()
+		unload_enemy()
+		# Enables button
+		button_toggle(false)
+		# Reset values
+		Global.Player_Health = Global.Player_Max_Health
+		Global.amount_enemys = 0
+		level_number = 0
 
 func _on_start_pressed() -> void:
-	game_manager()
+	Global.Player_Alive = true
+	load_player()
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
