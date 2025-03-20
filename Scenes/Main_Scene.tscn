@@ -329,6 +329,7 @@ offset_bottom = 551.0
 horizontal_alignment = 1
 
 [node name="Death_msg" type="Label" parent="HUD"]
+layout_mode = 0
 offset_left = 360.0
 offset_top = 334.0
 offset_right = 876.0
