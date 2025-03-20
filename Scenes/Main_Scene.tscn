@@ -9,6 +9,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_t33is")
 
 [node name="HUD" type="Control" parent="."]
@@ -34,7 +36,7 @@ layout_mode = 0
 offset_left = 976.0
 offset_top = 30.0
 offset_right = 1122.0
-offset_bottom = 209.0
+offset_bottom = 77.0
 text = "Buffs"
 horizontal_alignment = 1
 
@@ -48,9 +50,10 @@ text = "Enemys Left: "
 horizontal_alignment = 1
 
 [node name="Menu" type="Control" parent="."]
+layout_direction = 1
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1153.0
+offset_bottom = 649.0
 
 [node name="Start" type="Button" parent="Menu"]
 layout_mode = 0

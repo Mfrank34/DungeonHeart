@@ -11,3 +11,8 @@ var Player_Damage_Output = 20
 
 # enemy tracking
 var amount_enemys = 0
+
+# buffs system
+var extra_health = 0
+var extra_damage = 0
+var extra_movement = 0 

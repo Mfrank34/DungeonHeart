@@ -72,11 +72,11 @@ func attack():
 func enemy(delta):
 	var velocity = Vector2.ZERO
 	if health <= 0:
-		Global.amount_enemys -= 1 # removes it self from enemy amount in global.
 		animation_player(direction, "death")
 		await get_tree().create_timer(0.5).timeout  # Short delay before deleting
 		queue_free()
-		return
+		Global.amount_enemys -= 1 # removes it self from enemy amount in global.
+		print("Log: Goblin Dead!")
 	if playerChase:
 		velocity = (player.get_global_position() - position).normalized() * speed * delta
 		update_direction(player.position - position)

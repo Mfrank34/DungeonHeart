@@ -31,15 +31,33 @@ var total_enemy = (enemys.size() - 1)
 # limit map spawning.
 var map_limits_min
 var map_limits_max
-var loading : bool
+
+# buffs
+var buffs_list = ["health", "damage", "movement"]
+var max_buffs = ( buffs_list.size() - 1 ) 
+# changes to types buffs
+var extra_health = 50
+var extra_damage = 25
+var extra_movement = 25
+# buffs UI elements
+var ui_health : int
+var ui_damage : int
+var ui_movement : int
+
+# player Default stats
+var player_default_health = 300
+var player_default_extra_damage = 1
+var player_default_movement_max = 125
+# game state
+var play : bool
 
 func _ready() -> void:
 	pass
 
 func _process(_delta) -> void:
-	if loading:
-		pass
-	updates_display()
+	if play:
+		game_manager()
+		updates_display()
 
 func unload_instance():
 	unload_enemy()
@@ -118,7 +136,7 @@ func load_player():
 		else:
 			print("Error: Player scene not found at", player_path)
 	else:
-		# move player back to spawn location
+		## move player back to spawn location
 		player_instance.position = player_spawn.position
 		print("Player repositioned to:", player_instance.position)
 
@@ -142,33 +160,58 @@ func level_manager() -> void:
 func updates_display() -> void:
 	# Update the health label with the current player's health from Global
 	health.text = "Health: %d" % Global.Player_Health
-	alive_enemys_count.text = "Enemy left: %d" % Global.amount_enemys
+	alive_enemys_count.text = "Enemy left: %d" % Global.amount_enemys 
+	# adds buffs to buffs tag
+	buffs.text = "--- Buffs ---\nHealth: %d\nDamage: %d\nSpeed: %d" % [ui_health, ui_damage, ui_movement] # put them in list for easer formatin
+
+func handout_buff():
+	var random_buff =  randi_range(1, max_buffs)
+	await get_tree().process_frame
+	match buffs_list[random_buff]:
+		"health": 
+			Global.extra_health += extra_health
+			ui_health += 1
+			print("Log: Extra Health | ", Global.extra_health)
+		"damage":
+			Global.extra_damage += extra_damage
+			ui_damage += 1
+			print("Log: Extra Damage | ", Global.extra_damage)
+		"movement": 
+			ui_movement += 1  
+			Global.extra_movement += extra_movement
+			print("Log: Extra Movement | ", Global.extra_movement)
 
 func game_manager():
+	button_toggle(true)
 	if Global.Player_Alive:
-		button_toggle(true)
-		load_player()
-		
+		# if enemys are dead load this?
 		if Global.amount_enemys == 0:
-			# load current level with enemy attacked.
+			# hands out buff to player out of 3
+			handout_buff()
+			# reload map and enemys
+			print("Log: All enemys are Dead!")
 			level_manager()
-			
+		# if player died unload instance.
 		if Global.Player_Health <= 0:
-			# stops game loop.
-			unload_instance()
+			print("Log: Player Has Died!") # debugging
 			Global.Player_Alive = false
+		# waits for Frame to done before updating amount
+		await get_tree().process_frame  # do not remove waites for a processed frame if not it breaks
+		 # print("Log: Enemy currrent amount | ", Global.amount_enemys )
 	else:
-		# Player is dead, unload level ands enemies
-		# Enables button
 		button_toggle(false)
+		unload_instance()
 		# Reset values
+		Global.Player_Alive = true
 		Global.Player_Health = Global.Player_Max_Health
 		Global.amount_enemys = 0
-		unload_instance()
+		# disables the game loop and stop maps generator.
+		play = false
 
 func _on_start_pressed() -> void:
-	Global.Player_Alive = true
-	game_manager()
+	play = true
+	load_player()
+	print("Log: Start button Pressed | ", play)
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()

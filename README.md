@@ -7,7 +7,6 @@ Credits Section By | Links
 - Game Endeavor Textures  | https://twitter.com/GameEndeavor
 - Tiny RPG Character | https://zerie.itch.io/tiny-rpg-character-asset-pack
 
-
 Refences              | Links
 - starting with Godot | https://youtu.be/5V9f3MT86M8?si=SML0eG1TBV8jK3df
 - DevWorm             | https://youtu.be/pBoXqW4RykE?si=Opsn18UWjb019bTN
