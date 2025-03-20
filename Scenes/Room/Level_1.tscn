@@ -1281,3 +1281,9 @@ light_mask = 3
 z_index = 10
 use_parent_material = true
 tile_set = SubResource("TileSet_jyg1h")
+
+[node name="TopLeft" type="Marker2D" parent="."]
+position = Vector2(26.6667, 76.6667)
+
+[node name="BottomRight" type="Marker2D" parent="."]
+position = Vector2(741.333, 404.667)

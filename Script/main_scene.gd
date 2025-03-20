@@ -7,6 +7,8 @@ extends Control
 @onready var health : Label = $HUD/Health
 @onready var alive_enemys_count : Label = $HUD/EnemyLeft
 @onready var buffs : Label = $HUD/Buffs
+@onready var level : Label = $HUD/Level
+@onready var death : Label = $HUD/Death_msg
 @onready var menu : Control = $Menu
 # map events
 @onready var main_2d : Node2D = $Main2D
@@ -51,6 +53,26 @@ var player_default_movement_max = 125
 # game state
 var play : bool
 
+func restart_game():
+	# restarting global system.
+	Global.Player_Alive = true
+	Global.amount_enemys = 0
+	Global.difficulty_level = 0
+	# player
+	Global.Player_Health = player_default_health
+	Global.Player_Max_Health = player_default_health
+	# reset buffs
+	Global.extra_health = 0
+	Global.extra_damage = 0
+	Global.extra_movement = 0 
+	# restats UI
+	death.text = ""
+	ui_health = 0
+	ui_damage = 0 
+	ui_movement = 0
+	# stop loop
+	play = false
+
 func _ready() -> void:
 	pass
 
@@ -62,6 +84,7 @@ func _process(_delta) -> void:
 func unload_instance():
 	unload_enemy()
 	unload_level()
+	unload_player()
 
 func unload_level():
 	# Unloads the current level
@@ -76,6 +99,12 @@ func unload_enemy():
 			if child is Marker2D: # bug fix with unloading. 
 				continue
 			child.queue_free()
+
+func unload_player():
+	# Unloads the current level
+	if player_instance:
+		player_instance.queue_free()
+		player_instance = null
 
 func button_toggle(state):
 	# true to disable | fasle to enable
@@ -162,14 +191,16 @@ func updates_display() -> void:
 	health.text = "Health: %d" % Global.Player_Health
 	alive_enemys_count.text = "Enemy left: %d" % Global.amount_enemys 
 	# adds buffs to buffs tag
-	buffs.text = "--- Buffs ---\nHealth: %d\nDamage: %d\nSpeed: %d" % [ui_health, ui_damage, ui_movement] # put them in list for easer formatin
+	buffs.text = "--- Buffs ---\nHealth: %d\nDamage: %d\nSpeed: %d" % [ui_health, ui_damage, ui_movement] # put them in list for easer formati
+	level.text = "Level: %d" % Global.difficulty_level
 
 func handout_buff():
-	var random_buff =  randi_range(1, max_buffs)
+	var random_buff = randi_range(0, max_buffs)
 	await get_tree().process_frame
 	match buffs_list[random_buff]:
 		"health": 
 			Global.extra_health += extra_health
+			Global.Player_Max_Health += Global.extra_health 
 			ui_health += 1
 			print("Log: Extra Health | ", Global.extra_health)
 		"damage":
@@ -180,6 +211,7 @@ func handout_buff():
 			ui_movement += 1  
 			Global.extra_movement += extra_movement
 			print("Log: Extra Movement | ", Global.extra_movement)
+		_: pass # fail safe.
 
 func game_manager():
 	button_toggle(true)
@@ -189,24 +221,23 @@ func game_manager():
 			# hands out buff to player out of 3
 			handout_buff()
 			# reload map and enemys
-			print("Log: All enemys are Dead!")
+			print("Log: All Enemys are Dead!")
 			level_manager()
+			load_player()
+			Global.difficulty_level += 1
 		# if player died unload instance.
 		if Global.Player_Health <= 0:
-			print("Log: Player Has Died!") # debugging
+			death.text = "You Dead!"
 			Global.Player_Alive = false
+			await get_tree().create_timer(0.5).timeout
+			print("Log: Player Has Died!") # debugging
 		# waits for Frame to done before updating amount
 		await get_tree().process_frame  # do not remove waites for a processed frame if not it breaks
 		 # print("Log: Enemy currrent amount | ", Global.amount_enemys )
 	else:
 		button_toggle(false)
 		unload_instance()
-		# Reset values
-		Global.Player_Alive = true
-		Global.Player_Health = Global.Player_Max_Health
-		Global.amount_enemys = 0
-		# disables the game loop and stop maps generator.
-		play = false
+		restart_game()
 
 func _on_start_pressed() -> void:
 	play = true

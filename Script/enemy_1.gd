@@ -10,8 +10,8 @@ var player_inattack_zone = false
 var cooldown = true
 
 # Slime Stats
-var damage = 5 # attack damage
-var health = 100 # slimes health 
+var damage = (5 * Global.difficulty_level ) # attack damage
+var health = (50 * Global.difficulty_level) # slimes health 
 var speed = 100 # movement speed.
 
 func _ready() -> void:
@@ -45,7 +45,7 @@ func _on_enemy_hit_box_body_exited(body: Node2D) -> void:
 # Dealing damage to enemy.
 func deal_with_damage():
 	if player_inattack_zone and Global.player_current_attack:
-		health -= 30
+		health -= (20 + Global.extra_damage)
 		print("Slime Health: ", health)
 		Global.player_current_attack = false
 
@@ -65,6 +65,10 @@ func attack():
 		# starts cooldown on attack.
 		timeout.start()
 
+func add_health(gains):
+	# cool maths for hp you know!
+	Global.Player_Health = min(Global.Player_Health + gains, Global.Player_Max_Health)
+
 # Enemy movement and direction handling.
 func enemy(delta):
 	var velocity = Vector2.ZERO
@@ -74,6 +78,9 @@ func enemy(delta):
 		queue_free()
 		Global.amount_enemys -= 1 # removes it self from enemy amount in global.
 		print("Log: Slime Dead!")
+		add_health(30)
+		# give health to player.
+		
 	# locate player
 	if playerChase:
 		velocity = (player.get_global_position() - position).normalized() * speed * delta

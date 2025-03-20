@@ -14,9 +14,9 @@ const speed = 100
 const accel = 750 # how fast to top speed
 const friction = 600 # well its friction idk how else to explain...
 # max speed.
-var max_speed = 125 # top speed the player can move at 
+var max_speed = (125 + Global.extra_movement) # top speed the player can move at 
 # Dash system
-var dashSpeed = 450
+var dashSpeed = (450 + Global.extra_movement)
 var dashCoolDown = true 
 # Combat System
 var player_attack_cooldown = true
@@ -42,7 +42,7 @@ func get_input():
 
 # Dash Start
 func _on_timer_timeout() -> void:
-	max_speed = 175
+	max_speed = (125 + Global.extra_movement)
 	dashCoolDown = true
 
 func dash():
@@ -121,6 +121,7 @@ func animation_player(direction, state):
 					animation.play("Up_Walk")
 				_:
 					animation.play("Up_Idle")
+		_: pass
 
 func player_movement(delta):
 	# death animation.

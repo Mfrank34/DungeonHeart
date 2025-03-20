@@ -14,5 +14,8 @@ var amount_enemys = 0
 
 # buffs system
 var extra_health = 0
-var extra_damage = 0
+var extra_damage = 0 # impleted on enemys
 var extra_movement = 0 
+
+# diffcultiy level
+var difficulty_level = 0

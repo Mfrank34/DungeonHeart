@@ -11,8 +11,8 @@ var player_inattack_zone = false
 var cooldown = true
 
 # Golbin Stats
-var damage = 15 # attack damage
-var health = 125 # slimes health 
+var damage = (10 * Global.difficulty_level) # attack damage
+var health = (75 * Global.difficulty_level)# slimes health 
 var speed = 125 # movement speed.
 
 func _ready() -> void:
@@ -46,7 +46,7 @@ func _on_enemy_hit_box_body_exited(body: Node2D) -> void:
 # Dealing damage to enemy.
 func deal_with_damage():
 	if player_inattack_zone and Global.player_current_attack:
-		health -= 30
+		health -= (20 + Global.extra_damage)
 		print("Golbin Health: ", health)
 		Global.player_current_attack = false
 
@@ -68,6 +68,10 @@ func attack():
 		# starting timer.
 		timeout.start()
 
+func add_health(gains):
+	# cool maths for hp you know!
+	Global.Player_Health = min(Global.Player_Health + gains, Global.Player_Max_Health)
+
 # Enemy movement and direction handling.
 func enemy(delta):
 	var velocity = Vector2.ZERO
@@ -77,6 +81,7 @@ func enemy(delta):
 		queue_free()
 		Global.amount_enemys -= 1 # removes it self from enemy amount in global.
 		print("Log: Goblin Dead!")
+		add_health(40)
 	if playerChase:
 		velocity = (player.get_global_position() - position).normalized() * speed * delta
 		update_direction(player.position - position)

@@ -429,7 +429,7 @@ script = ExtResource("1_2ypk5")
 position = Vector2(-1, -7)
 scale = Vector2(1.5, 1.542)
 sprite_frames = SubResource("SpriteFrames_vdn35")
-animation = &"Down_Walk"
+animation = &"Side_Idle"
 
 [node name="Body" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
