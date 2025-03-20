@@ -167,7 +167,6 @@ func player_movement(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		status = "attack" # sets the attack animation.
 		player_attack()
-
 	# animation
 	animation_player(direction, status)
 	# godot function for moveable objects
