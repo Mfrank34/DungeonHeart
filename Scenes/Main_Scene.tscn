@@ -329,19 +329,19 @@ offset_bottom = 551.0
 horizontal_alignment = 1
 
 [node name="Death_msg" type="Label" parent="HUD"]
+z_index = 10
 layout_mode = 0
-offset_left = 360.0
-offset_top = 334.0
-offset_right = 876.0
-offset_bottom = 419.0
+offset_left = 545.0
+offset_top = 320.0
+offset_right = 624.0
+offset_bottom = 361.0
 label_settings = SubResource("LabelSettings_5p0eq")
 horizontal_alignment = 1
 
 [node name="Menu" type="Control" parent="."]
 layout_direction = 1
 anchors_preset = 0
-offset_left = 1.0
-offset_right = 1154.0
+offset_right = 1153.0
 offset_bottom = 649.0
 
 [node name="TileMap" type="TileMap" parent="Menu"]
@@ -354,28 +354,28 @@ layer_0/tile_data = PackedInt32Array(0, 65536, 1, 65536, 720896, 7, 131072, 6553
 
 [node name="Title Screen" type="Label" parent="Menu"]
 layout_mode = 0
-offset_left = 354.0
-offset_top = 258.0
-offset_right = 870.0
-offset_bottom = 343.0
+offset_left = 325.0
+offset_top = 295.0
+offset_right = 841.0
+offset_bottom = 380.0
 text = "Dungon Heart"
 label_settings = SubResource("LabelSettings_4xruw")
 horizontal_alignment = 1
 
 [node name="Start" type="Button" parent="Menu"]
 layout_mode = 0
-offset_left = 459.0
-offset_top = 428.0
-offset_right = 760.0
-offset_bottom = 506.0
+offset_left = 42.0
+offset_top = 530.0
+offset_right = 343.0
+offset_bottom = 608.0
 text = "Start"
 
 [node name="Exit" type="Button" parent="Menu"]
 layout_mode = 0
-offset_left = 458.0
-offset_top = 526.0
-offset_right = 763.0
-offset_bottom = 598.0
+offset_left = 799.0
+offset_top = 536.0
+offset_right = 1104.0
+offset_bottom = 608.0
 text = "Exit"
 
 [node name="Main2D" type="Node2D" parent="."]
@@ -388,7 +388,7 @@ anchor_mode = 0
 z_index = 2
 
 [node name="PlayerSpawn" type="Marker2D" parent="Player2D"]
-position = Vector2(616, 514)
+position = Vector2(587, 479)
 
 [node name="Enemy2D" type="Node2D" parent="."]
 z_index = 2

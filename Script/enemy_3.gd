@@ -11,8 +11,8 @@ var player_inattack_zone = false
 var cooldown = true
 
 # Golbin Stats
-var damage = (10 * Global.difficulty_level) # attack damage
-var health = (75 * Global.difficulty_level)# slimes health 
+var damage = (4 * Global.difficulty_level)
+var health = (20 * Global.difficulty_level) 
 var speed = 125 # movement speed.
 
 func _ready() -> void:

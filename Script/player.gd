@@ -96,7 +96,7 @@ func animation_player(direction, state):
 				"attack":
 					animation.play("Side_Attack")
 				"dash":
-					pass
+					animation.play("Side_Dash")
 				"walk": 
 					animation.play("Side_Walk")
 				_:
@@ -106,7 +106,7 @@ func animation_player(direction, state):
 				"attack":
 					animation.play("Down_Attack")
 				"dash":
-					pass
+					animation.play("Down_Dash")
 				"walk":
 					animation.play("Down_Walk")
 				_:
@@ -116,7 +116,7 @@ func animation_player(direction, state):
 				"attack":
 					animation.play("Up_Attack")
 				"dash":
-					pass
+					animation.play("Up_Dash")
 				"walk":
 					animation.play("Up_Walk")
 				_:

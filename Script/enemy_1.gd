@@ -10,8 +10,8 @@ var player_inattack_zone = false
 var cooldown = true
 
 # Slime Stats
-var damage = (5 * Global.difficulty_level ) # attack damage
-var health = (50 * Global.difficulty_level) # slimes health 
+var damage = (2 * Global.difficulty_level ) # attack damage
+var health = (10 * Global.difficulty_level) # slimes health 
 var speed = 100 # movement speed.
 
 func _ready() -> void:

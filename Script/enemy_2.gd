@@ -10,8 +10,8 @@ var player_inattack_zone = false
 var cooldown = true
 
 # Knite Stats
-var damage = ( 15 * Global.difficulty_level) # attack damage
-var health = ( 100 * Global.difficulty_level) 
+var damage = (6 * Global.difficulty_level) # attack damage
+var health = (30 * Global.difficulty_level) 
 var speed = 75 # movement speed.
 
 func _ready() -> void:
