@@ -31,15 +31,19 @@ var total_enemy = (enemys.size() - 1)
 # limit map spawning.
 var map_limits_min
 var map_limits_max
-# run level
-var level_number = 1
+var loading : bool
 
 func _ready() -> void:
 	pass
 
-func _physics_process(_delta):
+func _process(_delta) -> void:
+	if loading:
+		pass
 	updates_display()
-	game_manager()
+
+func unload_instance():
+	unload_enemy()
+	unload_level()
 
 func unload_level():
 	# Unloads the current level
@@ -62,7 +66,6 @@ func button_toggle(state):
 			button.disabled = state
 
 func load_level(level_name : String):
-	unload_level()
 	# gets the path to load and remove the ending so just name to get with string
 	var level_path := "res://Scenes/Room/%s.tscn" % level_name
 	var level_resource := load(level_path)
@@ -98,7 +101,9 @@ func load_enemy(enemy_name: String):
 		print("Error: Enemy not found at", enemy_path)
 
 func load_player():
+	# doesnt make second instance.
 	if not player_instance:
+		# create instance if not already have one.
 		var player_path := "res://Scenes/Player.tscn"
 		var player_resource := load(player_path)
 		if player_resource:
@@ -118,12 +123,18 @@ func load_player():
 		print("Player repositioned to:", player_instance.position)
 
 func level_manager() -> void:
+	# unload current map and enemys if any...
+	unload_instance()
+	# loads new map
 	var level_gen = randi_range(0, total_map) # 1 to 3 random
 	load_level(maps[level_gen]) # load a random level.
+	# wait for map to load.
+	await get_tree().process_frame
 	# load in different enemys to kill.
 	var enemy_amount = randi_range(1, 6)
 	Global.amount_enemys = enemy_amount
 	print("Enemy amount: ", Global.amount_enemys)
+	# loading multable different instance.
 	for enemy in range(enemy_amount):
 		var enemy_type = randi_range(0, total_enemy)
 		load_enemy(enemys[enemy_type])
@@ -136,28 +147,28 @@ func updates_display() -> void:
 func game_manager():
 	if Global.Player_Alive:
 		button_toggle(true)
-		print("state of amount of enemys: ", Global.amount_enemys)
+		load_player()
+		
 		if Global.amount_enemys == 0:
-			if not level_number == 1:
-				await get_tree().create_timer(10).timeout
+			# load current level with enemy attacked.
 			level_manager()
-			level_number += 1
+			
+		if Global.Player_Health <= 0:
+			# stops game loop.
+			unload_instance()
+			Global.Player_Alive = false
 	else:
-		# Player is dead, unload level and enemies
-		unload_level()
-		unload_enemy()
+		# Player is dead, unload level ands enemies
 		# Enables button
 		button_toggle(false)
 		# Reset values
 		Global.Player_Health = Global.Player_Max_Health
 		Global.amount_enemys = 0
-		level_number = 0
+		unload_instance()
 
 func _on_start_pressed() -> void:
 	Global.Player_Alive = true
-	load_player()
+	game_manager()
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
-
-#update

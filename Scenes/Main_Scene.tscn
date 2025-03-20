@@ -39,6 +39,7 @@ text = "Buffs"
 horizontal_alignment = 1
 
 [node name="EnemyLeft" type="Label" parent="HUD"]
+layout_mode = 0
 offset_left = 37.0
 offset_top = 496.0
 offset_right = 163.0
