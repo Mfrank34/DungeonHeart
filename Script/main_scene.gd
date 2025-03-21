@@ -229,7 +229,7 @@ func game_manager():
 		if Global.Player_Health <= 0:
 			death.text = "You Dead!"
 			Global.Player_Alive = false
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(10).timeout
 			print("Log: Player Has Died!") # debugging
 		# waits for Frame to done before updating amount
 		await get_tree().process_frame  # do not remove waites for a processed frame if not it breaks
