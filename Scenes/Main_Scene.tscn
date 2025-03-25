@@ -339,6 +339,7 @@ label_settings = SubResource("LabelSettings_5p0eq")
 horizontal_alignment = 1
 
 [node name="Menu" type="Control" parent="."]
+z_index = 1
 layout_direction = 1
 anchors_preset = 0
 offset_right = 1153.0
@@ -354,15 +355,16 @@ layer_0/tile_data = PackedInt32Array(0, 65536, 1, 65536, 720896, 7, 131072, 6553
 
 [node name="Title Screen" type="Label" parent="Menu"]
 layout_mode = 0
-offset_left = 325.0
-offset_top = 295.0
-offset_right = 841.0
-offset_bottom = 380.0
+offset_left = 327.0
+offset_top = 306.0
+offset_right = 843.0
+offset_bottom = 391.0
 text = "Dungon Heart"
 label_settings = SubResource("LabelSettings_4xruw")
 horizontal_alignment = 1
 
 [node name="Start" type="Button" parent="Menu"]
+z_index = 1
 layout_mode = 0
 offset_left = 267.0
 offset_top = 531.0
@@ -371,6 +373,7 @@ offset_bottom = 609.0
 text = "Start"
 
 [node name="Exit" type="Button" parent="Menu"]
+z_index = 1
 layout_mode = 0
 offset_left = 593.0
 offset_top = 535.0

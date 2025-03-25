@@ -19,6 +19,11 @@ config/icon="res://Textures/icon.svg"
 
 Global="*res://Script/Global.gd"
 
+[display]
+
+window/size/resizable=false
+window/stretch/mode="viewport"
+
 [input]
 
 ui_left={

@@ -10,7 +10,8 @@ extends Control
 @onready var level : Label = $HUD/Level
 @onready var death : Label = $HUD/Death_msg
 @onready var menu : Control = $Menu
-# map events
+@onready var animation : AnimationPlayer = $"Menu/Level animation/AnimationPlayer"
+# map eventss
 @onready var main_2d : Node2D = $Main2D
 @onready var enemy_2d: Node2D = $Enemy2D
 @onready var player_2d: Node2D = $Player2D
@@ -213,11 +214,22 @@ func handout_buff():
 			print("Log: Extra Movement | ", Global.extra_movement)
 		_: pass # fail safe.
 
+func trans(flow):
+	match flow:
+		"out": 
+			animation.play("fade_out")
+			await get_tree().create_timer(0.5).timeout
+		"in":
+			animation.play("fade_ins")
+			await get_tree().create_timer(0.5).timeout
+
 func game_manager():
 	button_toggle(true)
+	#trans("in")
 	if Global.Player_Alive:
 		# if enemys are dead load this?
 		if Global.amount_enemys == 0:
+			#trans("out")
 			# hands out buff to player out of 3
 			handout_buff()
 			# reload map and enemys
@@ -225,12 +237,13 @@ func game_manager():
 			level_manager()
 			load_player()
 			Global.difficulty_level += 1
+			#trans("in")
 		# if player died unload instance.
 		if Global.Player_Health <= 0:
 			death.text = "You Dead!"
-			Global.Player_Alive = false
-			await get_tree().create_timer(10).timeout
 			print("Log: Player Has Died!") # debugging
+			await get_tree().create_timer(10.0).timeout
+			Global.Player_Alive = false
 		# waits for Frame to done before updating amount
 		await get_tree().process_frame  # do not remove waites for a processed frame if not it breaks
 		 # print("Log: Enemy currrent amount | ", Global.amount_enemys )
