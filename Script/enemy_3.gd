@@ -19,9 +19,11 @@ func _ready() -> void:
 	animation_player("Down", "idle")
 
 func _physics_process(delta: float) -> void:
-	enemy(delta)
-	deal_with_damage()
 	attack()
+	deal_with_damage()
+	enemy(delta)
+	
+	
 
 # Player entering body.
 func _on_detection_area_body_entered(body: Node2D) -> void: # when player enters range.
@@ -103,26 +105,34 @@ func animation_player(direction, state):
 		"Right":
 			animation.flip_h = false
 			match state:
-				"attack": animation.play("attack")
+				"attack": 
+					animation.play("attack")
+					await get_tree().create_timer(0.5).timeout
 				"walk": animation.play("walk")
 				"death": animation.play("death")
 				_: animation.play("idle")
 		"Left":
 			animation.flip_h = true
 			match state:
-				"attack": animation.play("attack")
+				"attack": 
+					animation.play("attack")
+					await get_tree().create_timer(0.5).timeout
 				"walk": animation.play("walk")
 				"death": animation.play("death")
 				_: animation.play("idle")
 		"Down":
 			match state:
-				"attack": animation.play("attack")
+				"attack":
+					animation.play("attack")
+					await get_tree().create_timer(0.5).timeout
 				"walk": animation.play("walk")
 				"death": animation.play("death")
 				_: animation.play("idle")
 		"Up":
 			match state:
-				"attack": animation.play("attack")
+				"attack":
+					animation.play("attack")
+					await get_tree().create_timer(0.5).timeout
 				"walk": animation.play("walk")
 				"death": animation.play("death")
 				_: animation.play("idle")

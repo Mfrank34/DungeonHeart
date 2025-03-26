@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var animation : AnimatedSprite2D = $AnimatedSprite2D
+
 # Movement and detection.
 var playerChase = false
 var player = null
@@ -18,9 +20,9 @@ func _ready() -> void:
 	animation_player("Down", "idle")
 
 func _physics_process(delta: float) -> void:
-	enemy(delta)
-	deal_with_damage()
 	attack()
+	deal_with_damage()
+	enemy(delta)
 
 # Player entering body.
 func _on_detection_area_body_entered(body: Node2D) -> void: # when player enters range.
@@ -62,7 +64,6 @@ func attack():
 		print("Player Health: ", Global.Player_Health)
 		# animation attack
 		animation_player(direction, "attack")
-		await get_tree().create_timer(0.5).timeout
 		# starts cooldown on attack.
 		timeout.start()
 
@@ -97,31 +98,42 @@ func update_direction(movement: Vector2):
 		direction = "Down" if movement.y > 0 else "Up"
 
 func animation_player(direction, state):
-	var animation = $AnimatedSprite2D
 	match direction:
 		"Right":
 			animation.flip_h = false
 			match state:
-				"attack": animation.play("attack")
+				"attack": 
+					animation.play("attack")
+					await get_tree().create_timer(0.5).timeout
+					print("debug: attack played")
 				"walk": animation.play("walk")
 				"death": animation.play("death")
 				_: animation.play("idle")
 		"Left":
 			animation.flip_h = true
 			match state:
-				"attack": animation.play("attack")
+				"attack": 
+					animation.play("attack")
+					await get_tree().create_timer(0.5).timeout
+					print("debug: attack played")
 				"walk": animation.play("walk")
 				"death": animation.play("death")
 				_: animation.play("idle")
 		"Down":
 			match state:
-				"attack": animation.play("attack")
+				"attack":
+					animation.play("attack")
+					await get_tree().create_timer(0.5).timeout
+					print("debug: attack played")
 				"walk": animation.play("walk")
 				"death": animation.play("death")
 				_: animation.play("idle")
 		"Up":
 			match state:
-				"attack": animation.play("attack")
+				"attack":
+					animation.play("attack")
+					await get_tree().create_timer(0.5).timeout
+					print("debug: attack played")
 				"walk": animation.play("walk")
 				"death": animation.play("death")
 				_: animation.play("idle")

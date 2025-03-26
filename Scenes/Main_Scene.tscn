@@ -364,7 +364,6 @@ label_settings = SubResource("LabelSettings_4xruw")
 horizontal_alignment = 1
 
 [node name="Start" type="Button" parent="Menu"]
-z_index = 1
 layout_mode = 0
 offset_left = 267.0
 offset_top = 531.0
@@ -373,7 +372,6 @@ offset_bottom = 609.0
 text = "Start"
 
 [node name="Exit" type="Button" parent="Menu"]
-z_index = 1
 layout_mode = 0
 offset_left = 593.0
 offset_top = 535.0
