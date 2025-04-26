@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bp8naeyy66kcv"]
 
-[ext_resource type="Script" uid="uid://wyj6c6q2lrqw" path="res://Script/main_scene.gd" id="1_t33is"]
+[ext_resource type="Script" path="res://Script/main_scene.gd" id="1_t33is"]
 [ext_resource type="Texture2D" uid="uid://di45xogm1wxoi" path="res://Textures/SetParts/TX Tileset Grass.png" id="2_4xruw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5p0eq"]
